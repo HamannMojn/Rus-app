@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Rus-App</string>
+    <string name="instructor" />
+    <string name="Instructor">Instructor</string>
+    <string name="Beverage_Menu">Beverage Menu</string>
+    <string name="beverages">Beverages</string>
+    <string name="leaderboard">Leaderboard</string>
+    <string name="Instructors">Instructors</string>
+    <string name="textview">TextView</string>
+</resources>
