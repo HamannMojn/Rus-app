@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.GridView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,11 +22,14 @@ public class MainActivity extends AppCompatActivity {
     private MainActivityViewModel viewModel;
     private ArrayList<Instructor> instructors;
     private Button beverageBtn, leaderboardBtn, instructorsBtn;
+    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        auth = FirebaseAuth.getInstance();
 
         grid = findViewById(R.id.grid);
         adapter = new InstructorAdapter(instructors, this);
