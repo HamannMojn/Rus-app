@@ -4,12 +4,12 @@ public class Drinks {
 
     private String name;
     private double price;
-    private String ThumbnailURL;
+    private String thumbnailURL;
 
     public Drinks(String name, double price, String thumbnailURL) {
         this.name = name;
         this.price = price;
-        ThumbnailURL = thumbnailURL;
+        this.thumbnailURL = thumbnailURL;
     }
 
     public String getName() {
@@ -29,10 +29,10 @@ public class Drinks {
     }
 
     public String getThumbnailURL() {
-        return ThumbnailURL;
+        return thumbnailURL;
     }
 
     public void setThumbnailURL(String thumbnailURL) {
-        ThumbnailURL = thumbnailURL;
+        this.thumbnailURL = thumbnailURL;
     }
 }
