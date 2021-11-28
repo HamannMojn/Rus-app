@@ -20,9 +20,9 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-import dk.au.mad21fall.projekt.rus_app.Tutor;
+import dk.au.mad21fall.projekt.rus_app.Models.Tutor;
 
-public class MainActivityViewModel  extends ViewModel {
+public class MainActivityViewModel extends ViewModel {
 
     MutableLiveData<ArrayList<Tutor>> tutors;
 
