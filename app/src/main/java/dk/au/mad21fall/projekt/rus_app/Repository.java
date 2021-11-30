@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.MutableLiveData;
 import dk.au.mad21fall.projekt.rus_app.Models.Drinks;
-import dk.au.mad21fall.projekt.rus_app.Models.Purchaces;
+import dk.au.mad21fall.projekt.rus_app.Models.Purchases;
 import dk.au.mad21fall.projekt.rus_app.Models.Team;
 import dk.au.mad21fall.projekt.rus_app.Models.Tutor;
 
@@ -28,14 +28,14 @@ public class Repository {
 
     MutableLiveData<ArrayList<Tutor>> tutors;
     MutableLiveData<ArrayList<Team>> teams;
-    MutableLiveData<ArrayList<Purchaces>> purchaces;
+    MutableLiveData<ArrayList<Purchases>> purchases;
     MutableLiveData<ArrayList<Drinks>> drinks;
     MutableLiveData<Tutor> tutor;
 
     public Repository() {
         tutors = new MutableLiveData<>();
         teams = new MutableLiveData<>();
-        purchaces = new MutableLiveData<>();
+        purchases = new MutableLiveData<>();
         drinks = new MutableLiveData<>();
         tutor = new MutableLiveData<>();
     }
