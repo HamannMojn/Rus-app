@@ -5,18 +5,14 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
-import android.view.Display;
 import android.view.View;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.TextView;
-
-import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
 import dk.au.mad21fall.projekt.rus_app.R;
-import dk.au.mad21fall.projekt.rus_app.Tutor;
+import dk.au.mad21fall.projekt.rus_app.Models.Tutor;
 
 public class MainActivity extends AppCompatActivity {
     private MainActivityViewModel viewModel;

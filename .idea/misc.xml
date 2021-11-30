@@ -5,8 +5,9 @@
       <map>
         <entry key="..\:/Users/Hamann/Desktop/RusApp/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/Hamann/Desktop/RusApp/app/src/main/res/layout/list_item.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/activity_bar.xml" value="0.21739130434782608" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18333333333333332" />
-        <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.16927083333333334" />
+        <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.16927083333333334" />
         <entry key="app/src/main/res/layout/list_item.xml" value="0.18333333333333332" />
       </map>
