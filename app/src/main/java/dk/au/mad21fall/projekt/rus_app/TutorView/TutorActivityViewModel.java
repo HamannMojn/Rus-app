@@ -1,6 +1,7 @@
 package dk.au.mad21fall.projekt.rus_app.TutorView;
 
 import android.app.Application;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -15,8 +16,13 @@ public class TutorActivityViewModel extends ViewModel {
     Repository repo;
     String TAG = "TutorActivityViewModel";
 
-    public LiveData<ArrayList<Tutor>> getTutors() {
+    public TutorActivityViewModel() {
+        repo = new Repository();
+    }
 
+    public LiveData<ArrayList<Tutor>> getTutors() {
+        Log.d(TAG, "Getting all tutors from repo");
+        tutors = repo.getTutors();
         return tutors;
     }
 

@@ -19,7 +19,7 @@ import dk.au.mad21fall.projekt.rus_app.Models.Drinks;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DrinksAdapter extends RecyclerView.Adapter<DrinksAdapter.DrinkViewHolder>
+/*public class DrinksAdapter extends RecyclerView.Adapter<DrinksAdapter.DrinkViewHolder>
 {
     //interface for handling when a Person item is clicked
     public interface IDrinkItemClickedListener
@@ -127,4 +127,4 @@ public class DrinksAdapter extends RecyclerView.Adapter<DrinksAdapter.DrinkViewH
         this.DrinkList = drinks;
         notifyDataSetChanged();
     }
-}
+}*/
