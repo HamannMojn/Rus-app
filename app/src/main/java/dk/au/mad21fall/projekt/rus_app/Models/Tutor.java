@@ -5,13 +5,15 @@ public class Tutor {
     private String FirstName;
     private String LastName;
     private String TutorName;
+    private String Email;
 
     public Tutor() {}
 
-    public Tutor(String firstName, String lastName, String tutorName) {
+    public Tutor(String firstName, String lastName, String tutorName, String email) {
         this.FirstName = firstName;
         this.LastName = lastName;
         this.TutorName = tutorName;
+        this.Email = email;
     }
 
     public String getFirstName() {
@@ -36,5 +38,13 @@ public class Tutor {
 
     public void setTutorName(String tutorName) {
         TutorName = tutorName;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
     }
 }

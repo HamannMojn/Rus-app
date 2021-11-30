@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RusApp">
         <activity
+            android:name=".TabView.TabActivity"
+            android:exported="false" />
+        <activity
             android:name=".LeaderBoardView.LeaderBoardActivity"
             android:exported="false" />
         <activity
@@ -34,8 +37,8 @@
             android:name=".MainView.MainActivity"
             android:exported="false" />
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

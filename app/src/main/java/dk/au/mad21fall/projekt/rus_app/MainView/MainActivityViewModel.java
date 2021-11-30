@@ -69,7 +69,7 @@ public class MainActivityViewModel extends ViewModel {
 
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        db.collection("tutors").add(new Tutor(first, last, tutor))
+        db.collection("tutors").add(new Tutor(first, last, tutor, "FUCK DIG!"))
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
