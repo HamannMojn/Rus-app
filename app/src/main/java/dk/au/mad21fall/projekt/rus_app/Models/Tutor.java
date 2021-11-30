@@ -6,6 +6,7 @@ public class Tutor {
     private String LastName;
     private String TutorName;
     private String Email;
+    private boolean admin;
 
     public Tutor() {}
 
@@ -46,5 +47,13 @@ public class Tutor {
 
     public void setEmail(String email) {
         Email = email;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 }
