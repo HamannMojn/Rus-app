@@ -6,15 +6,16 @@ public class Tutor {
     private String LastName;
     private String TutorName;
     private String Email;
-    private boolean admin;
+    private boolean Admin;
 
     public Tutor() {}
 
-    public Tutor(String firstName, String lastName, String tutorName, String email) {
+    public Tutor(String firstName, String lastName, String tutorName, String email, boolean admin) {
         this.FirstName = firstName;
         this.LastName = lastName;
         this.TutorName = tutorName;
         this.Email = email;
+        this.Admin = admin;
     }
 
     public String getFirstName() {
@@ -50,10 +51,10 @@ public class Tutor {
     }
 
     public boolean isAdmin() {
-        return admin;
+        return Admin;
     }
 
     public void setAdmin(boolean admin) {
-        this.admin = admin;
+        this.Admin = admin;
     }
 }
