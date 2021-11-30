@@ -1,5 +1,7 @@
 package dk.au.mad21fall.projekt.rus_app;
 
+import android.app.Application;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -17,6 +19,7 @@ import dk.au.mad21fall.projekt.rus_app.Models.Team;
 import dk.au.mad21fall.projekt.rus_app.Models.Tutor;
 
 public class Repository {
+    public static Repository instance = null;
     String TAG = "REPO";
 
     //firebase authentication and firestore
@@ -35,6 +38,14 @@ public class Repository {
         purchaces = new MutableLiveData<>();
         drinks = new MutableLiveData<>();
         tutor = new MutableLiveData<>();
+    }
+
+    public static Repository getRepository(Application application) {
+        if(instance == null)
+        {
+            instance = new Repository();
+        }
+        return instance;
     }
 
     public void getTutors() {
