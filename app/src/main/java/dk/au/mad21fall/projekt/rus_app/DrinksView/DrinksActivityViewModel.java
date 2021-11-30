@@ -11,9 +11,10 @@ import java.util.List;
 import dk.au.mad21fall.projekt.rus_app.Models.Drinks;
 import dk.au.mad21fall.projekt.rus_app.Repository;
 
-public class DrinksActivityViewModel extends AndroidViewModel {
+/*public class DrinksActivityViewModel extends AndroidViewModel {
 private Repository repository;
 private LiveData<Drinks> drinks;
+private LiveData<List<Drinks>> allDrinks;
 
     public DrinksActivityViewModel(@NonNull Application application) {
         super(application);
@@ -32,4 +33,4 @@ private LiveData<Drinks> drinks;
     }
 
     public void requestDrinkFromAPI(String drinkName){repository.getDrinkFromApi(drinkName, false);}
-}
+}*/
