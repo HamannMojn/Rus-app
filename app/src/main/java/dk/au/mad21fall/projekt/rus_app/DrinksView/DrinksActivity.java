@@ -14,7 +14,7 @@ public class DrinksActivity extends AppCompatActivity {
     //widgets
     private Button btnBack;
     //Dependencies
-    private DrinksActivityViewModel drinkViewModel;
+    //private DrinksActivityViewModel drinkViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

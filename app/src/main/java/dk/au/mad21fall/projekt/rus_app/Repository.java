@@ -1,20 +1,25 @@
 package dk.au.mad21fall.projekt.rus_app;
 
 import android.app.Application;
+import android.util.Log;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.MutableLiveData;
 import dk.au.mad21fall.projekt.rus_app.Models.Drinks;
-import dk.au.mad21fall.projekt.rus_app.Models.Purchases;
+
 import dk.au.mad21fall.projekt.rus_app.Models.Team;
 import dk.au.mad21fall.projekt.rus_app.Models.Tutor;
 
@@ -27,15 +32,16 @@ public class Repository {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     MutableLiveData<ArrayList<Tutor>> tutors;
+
     MutableLiveData<ArrayList<Team>> teams;
-    MutableLiveData<ArrayList<Purchases>> purchases;
+    //MutableLiveData<ArrayList<Purchaces>> purchaces;
     MutableLiveData<ArrayList<Drinks>> drinks;
     MutableLiveData<Tutor> tutor;
 
     public Repository() {
         tutors = new MutableLiveData<>();
         teams = new MutableLiveData<>();
-        purchases = new MutableLiveData<>();
+        //purchaces = new MutableLiveData<>();
         drinks = new MutableLiveData<>();
         tutor = new MutableLiveData<>();
     }
@@ -48,7 +54,7 @@ public class Repository {
         return instance;
     }
 
-    public void getTutors() {
+    public MutableLiveData<ArrayList<Tutor>> getTutors() {
         db.collection("tutors").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot snapshot, @Nullable FirebaseFirestoreException error) {
@@ -64,5 +70,6 @@ public class Repository {
                 }
             }
         });
+        return tutors;
     }
 }
