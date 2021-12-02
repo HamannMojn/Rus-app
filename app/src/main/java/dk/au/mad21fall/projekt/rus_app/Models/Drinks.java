@@ -6,10 +6,10 @@ public class Drinks {
     private double price;
     private String thumbnailURL;
 
-    public Drinks(String name, double price, String thumbnailURL) {
-        this.name = name;
-        this.price = price;
-        this.thumbnailURL = thumbnailURL;
+    public Drinks() {
+        this.name = "";
+        this.price = 0.0;
+        this.thumbnailURL = "";
     }
 
     public String getName() {

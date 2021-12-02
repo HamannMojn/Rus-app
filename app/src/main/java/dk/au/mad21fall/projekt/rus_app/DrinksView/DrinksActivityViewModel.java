@@ -1,20 +1,24 @@
 package dk.au.mad21fall.projekt.rus_app.DrinksView;
 
+import static com.firebase.ui.auth.AuthUI.getApplicationContext;
+
 import android.app.Application;
+import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import dk.au.mad21fall.projekt.rus_app.Models.Drinks;
 import dk.au.mad21fall.projekt.rus_app.Repository;
 
-/*public class DrinksActivityViewModel extends AndroidViewModel {
+public class DrinksActivityViewModel extends AndroidViewModel {
 private Repository repository;
 private LiveData<Drinks> drinks;
-private LiveData<List<Drinks>> allDrinks;
+private LiveData<ArrayList<Drinks>> allDrinks;
 
     public DrinksActivityViewModel(@NonNull Application application) {
         super(application);
@@ -22,7 +26,7 @@ private LiveData<List<Drinks>> allDrinks;
         allDrinks = repository.getDrinks();
     }
 
-    LiveData<List<Drinks>> getAllDrinks(){return allDrinks;}
+    LiveData<ArrayList<Drinks>> getAllDrinks(){return allDrinks;}
 
     public void addDrink(Drinks drink) {
         repository.addDrink(drink);
@@ -32,5 +36,5 @@ private LiveData<List<Drinks>> allDrinks;
         repository.editDrink(drink);
     }
 
-    public void requestDrinkFromAPI(String drinkName){repository.getDrinkFromApi(drinkName, false);}
-}*/
+    public void requestDrinkFromAPI(String drinkName, Context context){repository.RequestDrinkFromAPI(drinkName, context);}
+}
