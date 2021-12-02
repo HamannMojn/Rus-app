@@ -154,6 +154,10 @@ public class Repository {
         db.collection("drinks").add(drink);
     }
 
+    public void addTutor(Tutor tutor) {
+        db.collection("tutors").add(tutor);
+    }
+
     public void editDrink(Drinks drink) {
     }
 

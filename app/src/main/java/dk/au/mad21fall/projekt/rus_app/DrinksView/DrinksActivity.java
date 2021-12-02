@@ -57,7 +57,7 @@ public class DrinksActivity extends AppCompatActivity {
         //Find widgets
         btnBack = findViewById(R.id.btnGoBack);
         btnAddDrink = findViewById(R.id.btnAddDrink);
-        txtAddDrink = findViewById(R.id.txtAddDrink);
+        txtAddDrink = findViewById(R.id.txtAddName);
 
         //Setting up adapter
         adapter = new DrinksAdapter(drinks);
