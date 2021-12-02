@@ -12,8 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
-//import com.bumptech.glide.Glide;
-
 import dk.au.mad21fall.projekt.rus_app.R;
 import dk.au.mad21fall.projekt.rus_app.Models.Drinks;
 
@@ -32,7 +30,7 @@ public class DrinksAdapter extends RecyclerView.Adapter<DrinksAdapter.DrinkViewH
     private IDrinkItemClickedListener listener;
 
     //Data in the adapter
-    private List<Drinks> DrinkList = new ArrayList<>();
+    private ArrayList<Drinks> DrinkList = new ArrayList<>();
 
     //constructor
     public DrinksAdapter(ArrayList<Drinks> drinkViewHolder)
@@ -123,7 +121,7 @@ public class DrinksAdapter extends RecyclerView.Adapter<DrinksAdapter.DrinkViewH
 
     public void setOnItemClickListener(IDrinkItemClickedListener listener) { this.listener = listener; }
 
-    public void setDrink(List<Drinks> drinks)
+    public void setDrink(ArrayList<Drinks> drinks)
     {
         this.DrinkList = drinks;
         notifyDataSetChanged();

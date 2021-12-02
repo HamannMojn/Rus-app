@@ -3,6 +3,7 @@ package dk.au.mad21fall.projekt.rus_app.DrinksView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -14,10 +15,13 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import javax.annotation.Nullable;
+
 import dk.au.mad21fall.projekt.rus_app.Models.Drinks;
 import dk.au.mad21fall.projekt.rus_app.R;
 
 public class DrinksActivity extends AppCompatActivity {
+    String TAG = "DRINKSACTIVITY";
 
 
     //widgets
@@ -30,7 +34,7 @@ public class DrinksActivity extends AppCompatActivity {
     private DrinksActivityViewModel drinkViewModel;
 
     //Data
-    private ArrayList<Drinks> drinks;
+    private ArrayList<Drinks> drinks = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +44,12 @@ public class DrinksActivity extends AppCompatActivity {
         drinkViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(DrinksActivityViewModel.class);
         drinkViewModel.getAllDrinks().observe(this, new Observer<ArrayList<Drinks>>() {
             @Override
-            public void onChanged(ArrayList<Drinks> drinks) {adapter.setDrink(drinks);}
+            public void onChanged(@Nullable ArrayList<Drinks> drinks) {
+                adapter.setDrink(drinks);
+                adapter.updateDrinkList(drinks);
+            }
         });
 
-        adapter.updateDrinkList(drinks);
-        adapter = new DrinksAdapter(drinks);
         setupUi();
     }
 
@@ -53,8 +58,20 @@ public class DrinksActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.btnGoBack);
         btnAddDrink = findViewById(R.id.btnAddDrink);
         txtAddDrink = findViewById(R.id.txtAddDrink);
+
+        //Setting up adapter
+        adapter = new DrinksAdapter(drinks);
         rcvList = findViewById(R.id.rcvDrinks);
+        rcvList.setLayoutManager(new LinearLayoutManager(this));
         rcvList.setAdapter(adapter);
+
+
+        adapter.setOnItemClickListener(new DrinksAdapter.IDrinkItemClickedListener() {
+            @Override
+            public void onDrinkClicked(Drinks drinks) {
+                Log.d(TAG, "onDrinkClicked: New Activity");
+            }
+        });
 
         //Setup buttons
         btnBack.setOnClickListener(new View.OnClickListener() {

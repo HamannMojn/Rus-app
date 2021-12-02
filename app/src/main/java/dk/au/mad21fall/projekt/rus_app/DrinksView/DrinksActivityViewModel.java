@@ -8,6 +8,7 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +19,7 @@ import dk.au.mad21fall.projekt.rus_app.Repository;
 public class DrinksActivityViewModel extends AndroidViewModel {
 private Repository repository;
 private LiveData<Drinks> drinks;
-private LiveData<ArrayList<Drinks>> allDrinks;
+private MutableLiveData<ArrayList<Drinks>> allDrinks;
 
     public DrinksActivityViewModel(@NonNull Application application) {
         super(application);
@@ -26,7 +27,7 @@ private LiveData<ArrayList<Drinks>> allDrinks;
         allDrinks = repository.getDrinks();
     }
 
-    LiveData<ArrayList<Drinks>> getAllDrinks(){return allDrinks;}
+    public LiveData<ArrayList<Drinks>> getAllDrinks(){return allDrinks;}
 
     public void addDrink(Drinks drink) {
         repository.addDrink(drink);
