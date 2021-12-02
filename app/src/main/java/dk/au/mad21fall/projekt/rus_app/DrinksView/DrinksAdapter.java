@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import com.bumptech.glide.Glide;
 
 //import com.bumptech.glide.Glide;
 
@@ -65,8 +66,8 @@ public class DrinksAdapter extends RecyclerView.Adapter<DrinksAdapter.DrinkViewH
     {
         Drinks currentDrink = DrinkList.get(position);
 
-        //String MoviePosterURL = DrinkList.get(position).getPosterURL();
-        //Glide.with(holder.imgIcon.getContext()).load(currentMovie.getPosterURL()).into(holder.imgIcon);
+        //String DrinkThumbURL = DrinkList.get(position).getThumbnailURL();
+        Glide.with(holder.imgIcon.getContext()).load(currentDrink.getThumbnailURL()).into(holder.imgIcon);
 
         holder.txtDrinkName.setText(currentDrink.getName());
         holder.txtDrinkPrice.setText(currentDrink.getPrice() + ".kr");
