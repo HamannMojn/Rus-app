@@ -39,7 +39,9 @@ public class TutorActivity extends AppCompatActivity {
             @Override
             public void onChanged(ArrayList<Tutor> tutors) {
                 displayTutors = tutors;
+                tutorAdapter.Tutor(displayTutors);
                 updateUI();
+                changeScreen();
             }
         });
 
@@ -59,6 +61,7 @@ public class TutorActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         tutorAdapter = new TutorAdapter(displayTutors);
+        Log.d(TAG, "" + displayTutors.size());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(tutorAdapter);
 
@@ -78,10 +81,8 @@ public class TutorActivity extends AppCompatActivity {
                 display += t.getFirstName() + " " + t.getLastName() + " " + t.getTutorName() + "\n";
             }
             txtMain.setText(display);
-            tutorAdapter.Tutor(displayTutors);
         } else {
             txtMain.setText("hello sir, no tutors here OK?");
         }
-        changeScreen();
     }
 }

@@ -51,19 +51,16 @@ public class TutorAdapter extends RecyclerView.Adapter<TutorAdapter.TutorViewHol
     public class TutorViewHolder extends RecyclerView.ViewHolder
     {
         public ImageView imgIcon;
-        public TextView txtDrinkName;
-        public TextView txtDrinkPrice;
+        public TextView txtTutorName;
 
         public TutorViewHolder (@NonNull View itemView)
         {
             super(itemView);
 
-            imgIcon = itemView.findViewById(R.id.imgDrink);
-            txtDrinkName = itemView.findViewById(R.id.txtDrinkName);
-            txtDrinkPrice = itemView.findViewById(R.id.txtDrinkPrice);
+            imgIcon = itemView.findViewById(R.id.imgTutor);
+            txtTutorName = itemView.findViewById(R.id.txtTutorName);
 
 
-            //Set Click listener for whole list item
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view)
