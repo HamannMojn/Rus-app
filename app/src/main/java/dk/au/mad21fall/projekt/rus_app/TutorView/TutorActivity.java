@@ -31,6 +31,9 @@ public class TutorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tutor);
 
         tutorsViewModel = new ViewModelProvider(this).get(TutorActivityViewModel.class);
+        recyclerView = findViewById(R.id.rcvTutors);
+
+        buildRecyclerView();
 
         tutorsViewModel.getTutors().observe(this, new Observer<ArrayList<Tutor>>() {
             @Override
@@ -41,8 +44,18 @@ public class TutorActivity extends AppCompatActivity {
         });
 
         txtMain = findViewById(R.id.txtMain);
-        recyclerView = findViewById(R.id.rcvTutors);
 
+    }
+
+    void changeScreen() {
+        if (displayTutors.isEmpty()) {
+            recyclerView.setVisibility(View.GONE);
+        } else {
+            recyclerView.setVisibility(View.VISIBLE);
+        }
+    }
+
+    void buildRecyclerView() {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         tutorAdapter = new TutorAdapter(displayTutors);
@@ -55,14 +68,6 @@ public class TutorActivity extends AppCompatActivity {
 
             }
         });
-    }
-
-    void changeScreen() {
-        if (displayTutors.isEmpty()) {
-            recyclerView.setVisibility(View.GONE);
-        } else {
-            recyclerView.setVisibility(View.VISIBLE);
-        }
     }
 
     private void updateUI() {
