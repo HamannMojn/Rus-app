@@ -92,6 +92,25 @@ public class Repository {
         return tutors;
     }
 
+    public MutableLiveData<ArrayList<Team>> getTeams() {
+        db.collection("teams").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot snapshot, @Nullable FirebaseFirestoreException error) {
+                ArrayList<Team> updatedTeams = new ArrayList<>();
+                if(snapshot!=null && !snapshot.isEmpty()){
+                    for(DocumentSnapshot doc : snapshot.getDocuments()){
+                        Team t = doc.toObject(Team.class);
+                        if(t!=null) {
+                            updatedTeams.add(t);
+                        }
+                    }
+                    teams.setValue(updatedTeams);
+                }
+            }
+        });
+        return teams;
+    }
+
     public void RequestDrinkFromAPI(String drinkName, Context context)
     {
         queue = Volley.newRequestQueue(context.getApplicationContext());
