@@ -29,13 +29,12 @@ private MutableLiveData<ArrayList<Drinks>> allDrinks;
 
     public LiveData<ArrayList<Drinks>> getAllDrinks(){return allDrinks;}
 
-    public void addDrink(Drinks drink) {
-        repository.addDrink(drink);
+    public void addDrink(Drinks drink) { repository.addDrink(drink);
     }
 
     public void editDrink(Drinks drink){
         repository.editDrink(drink);
     }
 
-    public void requestDrinkFromAPI(String drinkName, Context context){repository.RequestDrinkFromAPI(drinkName, context);}
+    public void requestDrinkFromAPI(String drinkName, Context context){ repository.RequestDrinkFromAPI(drinkName, context);}
 }

@@ -10,6 +10,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -120,7 +121,7 @@ public class Repository {
             @Override
             public void onResponse(JSONObject response) {
                 Log.d(TAG, "Response: " + response);
-                addDrink(drinkFromJSON(response));
+                addDrink(drinkFromJSON(response, context));
             }
         }, new Response.ErrorListener() {
             @Override
@@ -133,7 +134,7 @@ public class Repository {
     }
 
     //Lægger response ind i en Drinks model
-    private Drinks drinkFromJSON(JSONObject response) {
+    private Drinks drinkFromJSON(JSONObject response, Context context) {
         Drinks drinkItem = new Drinks();
         drinkItem.setPrice(0.0);
         try{
@@ -141,7 +142,9 @@ public class Repository {
             drinkItem.setThumbnailURL(response.getJSONArray("drinks").getJSONObject(0).getString("strDrinkThumb"));
         }
         catch (org.json.JSONException e) {
-            Log.e(TAG, "Error: " + e);
+            Log.d(TAG, "Error: " + e);
+            Toast.makeText(context, "Error adding drink", Toast.LENGTH_SHORT).show();
+            return null;
         }
 
         Log.d(TAG, "drinkFromJSON:" + drinkItem.getName() + drinkItem.getThumbnailURL());
@@ -150,8 +153,15 @@ public class Repository {
 
     //This function add drinks to the database
     public void addDrink(Drinks drink) {
-        Log.d(TAG, "AddDrink: Adding drink: " + drink);
-        db.collection("drinks").add(drink);
+        if(drink == null)
+        {
+            Log.d(TAG, "AddDrink: fail adding drink");
+        }
+        else
+        {
+            Log.d(TAG, "AddDrink: Adding drink: " + drink);
+            db.collection("drinks").add(drink);
+        }
     }
 
     public void editDrink(Drinks drink) {

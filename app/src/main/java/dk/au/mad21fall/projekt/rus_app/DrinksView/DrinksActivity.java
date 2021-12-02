@@ -91,7 +91,7 @@ public class DrinksActivity extends AppCompatActivity {
                 else
                 {
                     drinkViewModel.requestDrinkFromAPI(txtAddDrink.getText().toString(), getApplicationContext());
-                    Log.d("MainApp","Onclick: AddedMovie");
+                    //Log.d("MainApp","Onclick: Added Drink");
                 }
             }
         });
