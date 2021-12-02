@@ -19,7 +19,7 @@ import dk.au.mad21fall.projekt.rus_app.Models.Drinks;
 import java.util.ArrayList;
 import java.util.List;
 
-/*public class DrinksAdapter extends RecyclerView.Adapter<DrinksAdapter.DrinkViewHolder>
+public class DrinksAdapter extends RecyclerView.Adapter<DrinksAdapter.DrinkViewHolder>
 {
     //interface for handling when a Person item is clicked
     public interface IDrinkItemClickedListener
@@ -54,7 +54,7 @@ import java.util.List;
     public DrinkViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
         View v;
-        v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
+        v = LayoutInflater.from(parent.getContext()).inflate(R.layout.drinks_grid_item, parent, false);
         DrinkViewHolder vh = new DrinkViewHolder(v);
         return vh;
     }
@@ -127,4 +127,4 @@ import java.util.List;
         this.DrinkList = drinks;
         notifyDataSetChanged();
     }
-}*/
+}

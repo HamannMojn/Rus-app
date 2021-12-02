@@ -23,9 +23,11 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import org.json.JSONObject;
@@ -99,7 +101,7 @@ public class Repository {
             @Override
             public void onResponse(JSONObject response) {
                 Log.d(TAG, "Response: " + response);
-                AddDrink(drinkFromJSON(response));
+                addDrink(drinkFromJSON(response));
             }
         }, new Response.ErrorListener() {
             @Override
@@ -127,8 +129,16 @@ public class Repository {
         return drinkItem;
     }
 
-    private void AddDrink(Drinks drink) {
+    //This function add drinks to the database
+    public void addDrink(Drinks drink) {
         Log.d(TAG, "AddDrink: Adding drink: " + drink);
         db.collection("drinks").add(drink);
+    }
+
+    public void editDrink(Drinks drink) {
+    }
+
+    public MutableLiveData<ArrayList<Drinks>> getDrinks() {
+        return null;
     }
 }

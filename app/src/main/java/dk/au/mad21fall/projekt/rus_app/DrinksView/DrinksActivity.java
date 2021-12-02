@@ -14,7 +14,7 @@ public class DrinksActivity extends AppCompatActivity {
     //widgets
     private Button btnBack;
     //Dependencies
-    //private DrinksActivityViewModel drinkViewModel;
+    private DrinksActivityViewModel drinkViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,5 +32,12 @@ public class DrinksActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+
+    //THIS IS ONLY FOR MY OWN ASS TO REMEMBER
+    private void RequestAPIStuff(String drinkName)
+    {
+        drinkViewModel.requestDrinkFromAPI(drinkName, getApplicationContext());
     }
 }
