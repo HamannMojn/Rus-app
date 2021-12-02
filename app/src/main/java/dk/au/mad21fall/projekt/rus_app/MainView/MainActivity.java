@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.Arrays;
 import java.util.List;
 
+import dk.au.mad21fall.projekt.rus_app.BarView.BarActivity;
 import dk.au.mad21fall.projekt.rus_app.R;
 import dk.au.mad21fall.projekt.rus_app.TutorView.TutorActivity;
 
@@ -74,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void gotoMainApp() {
-        Intent i = new Intent(this, TutorActivity.class);
+        Intent i = new Intent(this, BarActivity.class);
         startActivity(i);
         finish();
     }
