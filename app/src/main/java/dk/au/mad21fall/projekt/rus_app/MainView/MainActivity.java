@@ -18,6 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import dk.au.mad21fall.projekt.rus_app.BarView.BarActivity;
+import dk.au.mad21fall.projekt.rus_app.LeaderBoardView.LeaderBoardActivity;
 import dk.au.mad21fall.projekt.rus_app.R;
 import dk.au.mad21fall.projekt.rus_app.TutorView.TutorActivity;
 
