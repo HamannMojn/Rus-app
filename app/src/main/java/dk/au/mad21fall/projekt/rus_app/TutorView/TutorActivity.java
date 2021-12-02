@@ -3,9 +3,7 @@ package dk.au.mad21fall.projekt.rus_app.TutorView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -30,7 +28,7 @@ public class TutorActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tutor);
 
         tutorsViewModel = new ViewModelProvider(this).get(TutorActivityViewModel.class);
-        recyclerView = findViewById(R.id.rcvTutors);
+        recyclerView = findViewById(R.id.rcvDrinks);
 
         buildRecyclerView();
 
