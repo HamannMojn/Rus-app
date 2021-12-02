@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void gotoMainApp() {
-        Intent i = new Intent(this, LeaderBoardActivity.class);
+        Intent i = new Intent(this, TutorActivity.class);
         startActivity(i);
         finish();
     }

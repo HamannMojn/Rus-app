@@ -6,16 +6,18 @@ public class Tutor {
     private String LastName;
     private String TutorName;
     private String Email;
+    private String TutorImage;
     private boolean Admin;
 
     public Tutor() {}
 
-    public Tutor(String firstName, String lastName, String tutorName, String email, boolean admin) {
+    public Tutor(String firstName, String lastName, String tutorName, String email, boolean admin, String image) {
         this.FirstName = firstName;
         this.LastName = lastName;
         this.TutorName = tutorName;
         this.Email = email;
         this.Admin = admin;
+        this.TutorImage = image;
     }
 
     public String getFirstName() {
@@ -56,5 +58,13 @@ public class Tutor {
 
     public void setAdmin(boolean admin) {
         this.Admin = admin;
+    }
+
+    public String getTutorImage() {
+        return TutorImage;
+    }
+
+    public void setTutorImage(String tutorImage) {
+        TutorImage = tutorImage;
     }
 }

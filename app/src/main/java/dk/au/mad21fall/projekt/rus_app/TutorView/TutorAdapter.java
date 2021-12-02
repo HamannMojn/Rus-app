@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,11 +43,14 @@ public class TutorAdapter extends RecyclerView.Adapter<TutorAdapter.TutorViewHol
     @Override
     public void onBindViewHolder(@NonNull TutorViewHolder holder, int position) {
         Tutor currentTutor = TutorList.get(position);
+
+        Glide.with(holder.imgIcon.getContext()).load(currentTutor.getTutorImage()).into(holder.imgIcon);
+        holder.txtTutorName.setText(currentTutor.getTutorName());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return TutorList.size();
     }
 
     public class TutorViewHolder extends RecyclerView.ViewHolder
@@ -83,6 +88,7 @@ public class TutorAdapter extends RecyclerView.Adapter<TutorAdapter.TutorViewHol
     public void Tutor(ArrayList<Tutor> tutors)
     {
         this.TutorList = tutors;
+        Log.d("MY_PP", "" + this.TutorList.size());
         notifyDataSetChanged();
     }
 }

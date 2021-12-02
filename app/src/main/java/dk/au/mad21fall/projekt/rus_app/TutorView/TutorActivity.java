@@ -23,7 +23,6 @@ public class TutorActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TutorAdapter tutorAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    private TextView txtMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +39,9 @@ public class TutorActivity extends AppCompatActivity {
             public void onChanged(ArrayList<Tutor> tutors) {
                 displayTutors = tutors;
                 tutorAdapter.Tutor(displayTutors);
-                updateUI();
                 changeScreen();
             }
         });
-
-        txtMain = findViewById(R.id.txtMain);
 
     }
 
@@ -61,7 +57,6 @@ public class TutorActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         tutorAdapter = new TutorAdapter(displayTutors);
-        Log.d(TAG, "" + displayTutors.size());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(tutorAdapter);
 
@@ -71,18 +66,5 @@ public class TutorActivity extends AppCompatActivity {
 
             }
         });
-    }
-
-    private void updateUI() {
-        if(displayTutors.size() > 0) {
-            String display = "";
-            for (Tutor t : displayTutors) {
-                Log.d(TAG, "added: " + t.getFirstName());
-                display += t.getFirstName() + " " + t.getLastName() + " " + t.getTutorName() + "\n";
-            }
-            txtMain.setText(display);
-        } else {
-            txtMain.setText("hello sir, no tutors here OK?");
-        }
     }
 }
