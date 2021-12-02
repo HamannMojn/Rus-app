@@ -116,7 +116,6 @@ public class Repository {
         Drinks drinkItem = new Drinks();
         drinkItem.setPrice(0.0);
         try{
-            //response = response.getJSONObject("drinks").getString("strDrink");
             drinkItem.setName(response.getJSONArray("drinks").getJSONObject(0).getString("strDrink"));
             drinkItem.setThumbnailURL(response.getJSONArray("drinks").getJSONObject(0).getString("strDrinkThumb"));
         }
