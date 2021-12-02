@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -72,7 +71,7 @@ public class DrinksActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new DrinksAdapter.IDrinkItemClickedListener() {
             @Override
             public void onDrinkClicked(Drinks drinks) {
-                Log.d(TAG, "onDrinkClicked: New Activity");
+                CreateEditDrinkDialog();
             }
         });
 
@@ -89,53 +88,67 @@ public class DrinksActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(txtAddDrink.getText().toString().isEmpty())
                 {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(DrinksActivity.this, R.style.Theme_AppCompat_Dialog);
-                    final View editDialog = getLayoutInflater().inflate(R.layout.dialog_editdrink, null);
-                    builder.setView(editDialog);
-                    builder.setTitle("TMP_Add Drink");
-
-                    builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            EditText drinkName = editDialog.findViewById(R.id.txtDialogEditName);
-                            EditText drinkPrice = editDialog.findViewById(R.id.txtDialogEditPrice);
-
-                            Drinks newDrink = new Drinks();
-                            try {
-                                newDrink.setName(drinkName.getText().toString());
-                                newDrink.setPrice(Double.parseDouble(drinkPrice.getText().toString()));
-                                newDrink.setThumbnailURL("https://images.daarbak.dk/variant-images/122292/600x600/f2f105cf-4d30-4868-92f0-5c3dce3fa237.png");
-                            }catch(NumberFormatException e){
-                                Toast.makeText(getApplicationContext(), "Can't add empty drink", Toast.LENGTH_SHORT).show();
-                            }
-                            drinkViewModel.addDrink(newDrink);
-
-                        }
-                    });
-
-                    builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            Toast.makeText(getApplicationContext(), "Cancel pressed", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
-                    AlertDialog dialog = builder.create();
-
-                    dialog.show();
-
-                    Drinks newDrink = new Drinks();
-                    newDrink.setName("");
-                    newDrink.setPrice(0.0);
-                    newDrink.setThumbnailURL("https://images.daarbak.dk/variant-images/122292/600x600/f2f105cf-4d30-4868-92f0-5c3dce3fa237.png");
-
+                    CreateAddDrinkDialog();
                 }
                 else
                 {
                     drinkViewModel.requestDrinkFromAPI(txtAddDrink.getText().toString(), getApplicationContext());
-                    //Log.d("MainApp","Onclick: Added Drink");
                 }
             }
         });
+    }
+
+    private void CreateEditDrinkDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(DrinksActivity.this, R.style.Theme_AppCompat_Dialog);
+        final View editDialog = getLayoutInflater().inflate(R.layout.dialog_editdrink, null);
+        builder.setView(editDialog);
+        builder.setTitle("TMP_Edit Drink");
+
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(getApplicationContext(), "Cancel pressed", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void CreateAddDrinkDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(DrinksActivity.this, R.style.Theme_AppCompat_Dialog);
+        final View editDialog = getLayoutInflater().inflate(R.layout.dialog_adddrink, null);
+        builder.setView(editDialog);
+        builder.setTitle("TMP_Add Drink");
+
+        builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                EditText drinkName = editDialog.findViewById(R.id.txtDialogEditName);
+                EditText drinkPrice = editDialog.findViewById(R.id.txtDialogEditPrice);
+
+                Drinks newDrink = new Drinks();
+                try {
+                    newDrink.setName(drinkName.getText().toString());
+                    newDrink.setPrice(Double.parseDouble(drinkPrice.getText().toString()));
+                    newDrink.setThumbnailURL("https://images.daarbak.dk/variant-images/122292/600x600/f2f105cf-4d30-4868-92f0-5c3dce3fa237.png");
+                    drinkViewModel.addDrink(newDrink);
+                }catch(NumberFormatException e){
+                    Toast.makeText(getApplicationContext(), "Can't add empty drink", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(getApplicationContext(), "Cancel pressed", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+
+        dialog.show();
     }
 }
