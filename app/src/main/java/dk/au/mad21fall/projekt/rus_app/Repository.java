@@ -158,6 +158,22 @@ public class Repository {
     }
 
     public MutableLiveData<ArrayList<Drinks>> getDrinks() {
-        return null;
+        db.collection("drinks").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot snapshot, @Nullable FirebaseFirestoreException error) {
+                ArrayList<Drinks> updatedDrinks = new ArrayList<>();
+                if(snapshot!=null && !snapshot.isEmpty()){
+                    for(DocumentSnapshot doc : snapshot.getDocuments()){
+                        Drinks d = doc.toObject(Drinks.class);
+                        if(d!=null) {
+                            updatedDrinks.add(d);
+                        }
+                    }
+                    drinks.setValue(updatedDrinks);
+                }
+            }
+        });
+        Log.d(TAG, "getDrinks: ");
+        return drinks;
     }
 }
