@@ -3,17 +3,29 @@ package dk.au.mad21fall.projekt.rus_app.BarView;
 import android.content.Context;
 import android.util.Log;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import java.util.ArrayList;
+
+import dk.au.mad21fall.projekt.rus_app.Models.Tutor;
 import dk.au.mad21fall.projekt.rus_app.Repository;
 
 public class BarActivityViewModel extends ViewModel {
+    MutableLiveData<ArrayList<Tutor>> tutors;
     Repository repo;
-    String TAG = "DrinksActivityViewModel";
+    String TAG = "BarActivityViewModel";
 
-    public void RequestFromApi(String drinkName, Context context) {
-        Log.d(TAG, "RequestFromApi: Requesting drink" + drinkName);
-        repo.RequestDrinkFromAPI(drinkName, context);
+    public BarActivityViewModel() {
+        repo = new Repository();
     }
+
+    public LiveData<ArrayList<Tutor>> getTutors() {
+        Log.d(TAG, "Getting all tutors from repo");
+        tutors = repo.getTutors();
+        return tutors;
+    }
+
 }
 
