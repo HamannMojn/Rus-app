@@ -68,6 +68,9 @@ public class DrinksActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drinks);
 
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
+
         drinkViewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.getApplication())).get(DrinksActivityViewModel.class);
         drinkViewModel.getAllDrinks().observe(this, new Observer<ArrayList<Drinks>>() {
             @Override
