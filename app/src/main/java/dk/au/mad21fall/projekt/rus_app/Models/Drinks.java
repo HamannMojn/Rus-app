@@ -5,15 +5,25 @@ public class Drinks {
     private String name;
     private double price;
     private String thumbnailURL;
+    public String amount;
 
     public Drinks() {
         this.name = "";
         this.price = 0.0;
         this.thumbnailURL = "";
+        this.amount = "0";
     }
 
     public String getName() {
         return name;
+    }
+
+    public void setAmount(String amount){
+        this.amount = amount;
+    }
+
+    public String getAmount(){
+        return amount;
     }
 
     public void setName(String name) {

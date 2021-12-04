@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -23,6 +24,8 @@ public class AddDrinkToTutorActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private AddDrinkToTutorViewModel viewModel;
 
+    int count = 0;
+
     private ArrayList<Drinks> drinksList = new ArrayList<>();
 
     @Override
@@ -30,13 +33,11 @@ public class AddDrinkToTutorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adddrinktotutor);
         rcvDrinksList = findViewById(R.id.AddDrinksRcvView);
-        btnAddDrinks = findViewById(R.id.addDrinkToTutor);
         viewModel = new ViewModelProvider(this).get(AddDrinkToTutorViewModel.class);
-
 
         buildRcv();
 
-        btnAddDrinks.setOnClickListener(view -> addDrinks());
+        //btnAddDrinks.setOnClickListener(view -> addDrinks());
 
         viewModel.getDrinks().observe(this, new Observer<ArrayList<Drinks>>() {
             @Override
@@ -48,6 +49,7 @@ public class AddDrinkToTutorActivity extends AppCompatActivity {
             }
         });
     }
+
 
     private void changeScreen() {
         if(drinksList.isEmpty()){

@@ -41,9 +41,9 @@
         android:id="@+id/bar_DrinksAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Amount"
+        android:layout_marginEnd="10dp"
+        android:text="0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/remove_DrinkFromTutor"
-        app:layout_constraintStart_toEndOf="@+id/bar_DrinkName"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
