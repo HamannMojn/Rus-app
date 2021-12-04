@@ -84,6 +84,7 @@ public class Repository {
                 if(snapshot!=null && !snapshot.isEmpty()){
                     for(DocumentSnapshot doc : snapshot.getDocuments()){
                         Tutor t = doc.toObject(Tutor.class);
+                        t.setId(doc.getId());
                         if(t!=null) {
                             updatedTutors.add(t);
                         }
@@ -188,6 +189,36 @@ public class Repository {
 
     public void addTutor(Tutor tutor) {
         db.collection("tutors").add(tutor);
+    }
+
+    public void editTutor(Tutor tutor) {
+        db.collection("tutors").document(tutor.getId())
+                .set(tutor).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Log.d(TAG, "updated tutor: " + tutor.getFirstName());
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d(TAG, "updating tutor failed");
+            }
+        });
+    }
+
+    public void deleteTutor(Tutor tutor) {
+        db.collection("tutors").document(tutor.getId())
+                .delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Log.d(TAG, "Succesfully deleted "+tutor.getFirstName());
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.w(TAG, "Error deleting"+tutor.getFirstName(), e);
+            }
+        });
     }
 
     public void editDrink(Drinks drink) {
