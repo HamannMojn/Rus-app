@@ -8,11 +8,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import java.util.ArrayList;
 
+import dk.au.mad21fall.projekt.rus_app.AddDrinkToTutorView.AddDrinkToTutorActivity;
 import dk.au.mad21fall.projekt.rus_app.DrinksView.DrinksActivity;
 import dk.au.mad21fall.projekt.rus_app.LeaderBoardView.LeaderBoardActivity;
 import dk.au.mad21fall.projekt.rus_app.Models.Tutor;
@@ -48,6 +50,13 @@ public class BarActivity extends AppCompatActivity {
 
         buildRecyclerView();
 
+        barAdapter.setOnItemClickListener(new BarAdapter.BarItemClickedListener() {
+            @Override
+            public void onBarClicked(Tutor tutor) {
+                addDrinksToTutor();
+            }
+        });
+
         barViewModel.getTutors().observe(this, new Observer<ArrayList<Tutor>>() {
             @Override
             public void onChanged(ArrayList<Tutor> tutors) {
@@ -56,6 +65,11 @@ public class BarActivity extends AppCompatActivity {
                 changeScreen();
             }
         });
+    }
+
+    private void addDrinksToTutor() {
+        Intent addDrinksToTutorActivity = new Intent(this, AddDrinkToTutorActivity.class);
+        startActivity(addDrinksToTutorActivity);
     }
 
     private void changeScreen() {
@@ -82,6 +96,8 @@ public class BarActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
     private void drinks(){
         Intent drinksActivity = new Intent(this, DrinksActivity.class);
