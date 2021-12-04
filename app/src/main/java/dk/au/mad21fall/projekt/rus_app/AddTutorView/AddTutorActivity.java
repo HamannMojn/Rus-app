@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -25,6 +26,7 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.UUID;
@@ -47,6 +49,8 @@ public class AddTutorActivity extends AppCompatActivity {
     private Uri filePath;
     FirebaseStorage storage;
     StorageReference storageReference;
+
+    private String TAG = "AddTutorActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,8 +167,14 @@ public class AddTutorActivity extends AppCompatActivity {
                                                     "Image Uploaded!!",
                                                     Toast.LENGTH_SHORT)
                                             .show();
-                                    imageUrl = taskSnapshot.getStorage().getDownloadUrl().getResult().toString();
-                                    Log.d("DINMOR", imageUrl);
+                                    taskSnapshot.getStorage().getDownloadUrl().addOnCompleteListener(
+                                            new OnCompleteListener<Uri>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Uri> task) {
+                                                    imageUrl = task.getResult().toString();
+                                                    Log.d(TAG, "URL: " + imageUrl);
+                                                }
+                                            });
                                 }
                             })
 
