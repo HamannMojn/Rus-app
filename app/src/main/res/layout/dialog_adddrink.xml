@@ -16,6 +16,7 @@
         android:ems="10"
         android:hint="TMP_Drink Name"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,6 +33,7 @@
         android:ems="10"
         android:hint="TMP_DrinkPrice"
         android:inputType="number"
+        android:minHeight="48dp"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,7 +48,7 @@
         android:layout_marginTop="8dp"
         android:text="TMP_Drink Name"
         app:layout_constraintStart_toStartOf="@+id/txtDialogEditFirstname"
-        app:layout_constraintTop_toBottomOf="@+id/imgDialogEditTutor" />
+        app:layout_constraintTop_toBottomOf="@+id/imgDialogAddDrink" />
 
     <TextView
         android:id="@+id/textView4"
@@ -58,14 +60,14 @@
         app:layout_constraintTop_toBottomOf="@+id/txtDialogEditFirstname" />
 
     <ImageView
-        android:id="@+id/imgDialogEditTutor"
+        android:id="@+id/imgDialogAddDrink"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_crop"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@android:drawable/ic_menu_gallery"
+        tools:srcCompat="@android:drawable/ic_menu_gallery" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
