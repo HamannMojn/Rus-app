@@ -8,7 +8,7 @@
     android:padding="16dp">
 
     <EditText
-        android:id="@+id/txtDialogEditName"
+        android:id="@+id/txtDialogEditFirstname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -16,6 +16,7 @@
         android:ems="10"
         android:hint="TMP_Drink Name"
         android:inputType="textPersonName"
+        android:minHeight="48dp"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,6 +33,7 @@
         android:ems="10"
         android:hint="TMP_DrinkPrice"
         android:inputType="number"
+        android:minHeight="48dp"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="TMP_Drink Name"
-        app:layout_constraintStart_toStartOf="@+id/txtDialogEditName"
+        app:layout_constraintStart_toStartOf="@+id/txtDialogEditFirstname"
         app:layout_constraintTop_toBottomOf="@+id/imgDialogAddDrink" />
 
     <TextView
@@ -54,8 +56,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="TMP_Drink Price"
-        app:layout_constraintStart_toStartOf="@+id/txtDialogEditName"
-        app:layout_constraintTop_toBottomOf="@+id/txtDialogEditName" />
+        app:layout_constraintStart_toStartOf="@+id/txtDialogEditFirstname"
+        app:layout_constraintTop_toBottomOf="@+id/txtDialogEditFirstname" />
 
     <ImageView
         android:id="@+id/imgDialogAddDrink"
@@ -65,7 +67,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_crop"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@android:drawable/ic_menu_gallery"
+        tools:srcCompat="@android:drawable/ic_menu_gallery" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

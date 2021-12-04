@@ -10,29 +10,9 @@
         android:id="@+id/BtnSignInTutor"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="16dp"
-        android:text="Login as tutor"
+        android:layout_marginBottom="32dp"
+        android:text="Login with firebase"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/BtnSignInAdmin"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="8dp"
-        android:text="Login as admin"
-        app:layout_constraintBottom_toTopOf="@+id/BtnSignInTutor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/BtnSignInPlep"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="8dp"
-        android:text="Login as plep"
-        app:layout_constraintBottom_toTopOf="@+id/BtnSignInAdmin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -44,7 +24,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:text="VELKOMMEN TIL APP"
-        app:layout_constraintBottom_toTopOf="@+id/BtnSignInPlep"
+        app:layout_constraintBottom_toTopOf="@+id/BtnSignInTutor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

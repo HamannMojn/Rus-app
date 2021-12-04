@@ -2,6 +2,7 @@ package dk.au.mad21fall.projekt.rus_app.Models;
 
 public class Tutor {
 
+    private String id;
     private String FirstName;
     private String LastName;
     private String TutorName;
@@ -66,5 +67,13 @@ public class Tutor {
 
     public void setTutorImage(String tutorImage) {
         TutorImage = tutorImage;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
