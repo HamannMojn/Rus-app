@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -55,6 +56,7 @@ public class Repository {
     //MutableLiveData<ArrayList<Purchaces>> purchaces;
     MutableLiveData<ArrayList<Drinks>> drinks;
     MutableLiveData<Tutor> tutor;
+    boolean isTutor;
 
     //API
     private RequestQueue queue;
@@ -75,6 +77,54 @@ public class Repository {
             instance = new Repository();
         }
         return instance;
+    }
+
+    public boolean getCurrentUserIsTutor() {
+        FirebaseUser firebaseUser = auth.getCurrentUser();
+        isTutor = false;
+
+        db.collection("tutors").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot snapshot, @Nullable FirebaseFirestoreException error) {
+                if(snapshot!=null && !snapshot.isEmpty()){
+                    for(DocumentSnapshot doc : snapshot.getDocuments()){
+                        Tutor t = doc.toObject(Tutor.class);
+                        t.setId(doc.getId());
+                        if(t!=null) {
+                            if(t.getEmail() == firebaseUser.getEmail()) {
+                                isTutor = true;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        return isTutor;
+    }
+
+    public boolean getCurrentUserIsAdmin() {
+        FirebaseUser firebaseUser = auth.getCurrentUser();
+        isTutor = false;
+
+        db.collection("tutors").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot snapshot, @Nullable FirebaseFirestoreException error) {
+                if(snapshot!=null && !snapshot.isEmpty()){
+                    for(DocumentSnapshot doc : snapshot.getDocuments()){
+                        Tutor t = doc.toObject(Tutor.class);
+                        t.setId(doc.getId());
+                        if(t!=null) {
+                            if(t.getEmail() == firebaseUser.getEmail() && t.isAdmin()) {
+                                isTutor = true;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        return isTutor;
     }
 
     public MutableLiveData<ArrayList<Tutor>> getTutors() {
