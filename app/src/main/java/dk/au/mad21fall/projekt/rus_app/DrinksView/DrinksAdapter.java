@@ -54,8 +54,7 @@ public class DrinksAdapter extends RecyclerView.Adapter<DrinksAdapter.DrinkViewH
     {
         View v;
         v = LayoutInflater.from(parent.getContext()).inflate(R.layout.drinks_grid_item, parent, false);
-        DrinkViewHolder vh = new DrinkViewHolder(v);
-        return vh;
+        return new DrinkViewHolder(v);
     }
 
     //override this to fill in data from Drinks object at position into the view holder
@@ -66,7 +65,6 @@ public class DrinksAdapter extends RecyclerView.Adapter<DrinksAdapter.DrinkViewH
 
         //String DrinkThumbURL = DrinkList.get(position).getThumbnailURL();
         Glide.with(holder.imgIcon.getContext()).load(currentDrink.getThumbnailURL()).into(holder.imgIcon);
-
         holder.txtDrinkName.setText(currentDrink.getName());
         holder.txtDrinkPrice.setText(currentDrink.getPrice() + ".kr");
     }
