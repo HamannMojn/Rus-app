@@ -153,21 +153,45 @@ public class TutorActivity extends AppCompatActivity {
         builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(getApplicationContext(), "Cancel pressed", Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "Cancel pressed in dialog");
             }
         });
 
         builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                //Toast.makeText(getApplicationContext(), "Cancel pressed", Toast.LENGTH_SHORT).show();
+                Log.d(TAG, "Save pressed in dialog");
+                tutorsViewModel.editTutor(tutor);
             }
         });
 
         builder.setNegativeButton("Delete", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                //createConfrimDialog(drink);
+                createConfrimDialog(tutor);
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void createConfrimDialog(Tutor tutor) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(TutorActivity.this, R.style.Theme_AppCompat_Dialog);
+        builder.setTitle("Are you sure you want to delete " + tutor.getFirstName());
+
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Log.d(TAG, "Delete tutor canceled");
+            }
+        });
+
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Log.d(TAG, "Delete tutor canceled");
+                tutorsViewModel.deleteTutor(tutor);
             }
         });
 
