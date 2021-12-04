@@ -284,6 +284,7 @@ public class Repository {
     }
 
     public void editDrink(Drinks drink) {
+        db.collection("drinks").document(drink.getId()).set(drink);
     }
 
     public MutableLiveData<ArrayList<Drinks>> getDrinks() {
