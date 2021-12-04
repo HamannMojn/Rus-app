@@ -51,6 +51,8 @@
         android:hint="TMP_AddDrink"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/btnGoBack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

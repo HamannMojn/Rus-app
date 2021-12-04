@@ -186,4 +186,8 @@ public class Repository {
         Log.d(TAG, "getDrinks: ");
         return drinks;
     }
+
+    public void deleteDrink(Drinks drink) {
+        db.collection("Drinks").document(drink.getName()).delete();
+    }
 }

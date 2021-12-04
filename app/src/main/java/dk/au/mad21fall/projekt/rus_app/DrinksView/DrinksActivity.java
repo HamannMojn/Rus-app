@@ -8,12 +8,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
+import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -71,7 +76,8 @@ public class DrinksActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new DrinksAdapter.IDrinkItemClickedListener() {
             @Override
             public void onDrinkClicked(Drinks drinks) {
-                CreateEditDrinkDialog();
+                Log.d(TAG, "onDrinkClicked: " + drinks.getName());
+                CreateEditDrinkDialog(drinks);
             }
         });
 
@@ -98,17 +104,39 @@ public class DrinksActivity extends AppCompatActivity {
         });
     }
 
-    private void CreateEditDrinkDialog() {
+    private void CreateEditDrinkDialog(Drinks drink) {
         AlertDialog.Builder builder = new AlertDialog.Builder(DrinksActivity.this, R.style.Theme_AppCompat_Dialog);
-        final View editDialog = getLayoutInflater().inflate(R.layout.dialog_editdrink, null);
+        final View editDialog = getLayoutInflater().inflate(R.layout.dialog_adddrink, null);
         builder.setView(editDialog);
         builder.setTitle("TMP_Edit Drink");
 
+        //Find views
+        EditText drinkName = editDialog.findViewById(R.id.txtDialogEditName);
+        drinkName.setText(drink.getName());
+        EditText drinkPrice = editDialog.findViewById(R.id.txtDialogEditPrice);
+        drinkPrice.setText(drink.getPrice() +"");
+        ImageView image = editDialog.findViewById(R.id.imgDialogAddDrink);
+        Glide.with(image.getContext()).load(drink.getThumbnailURL()).into(image);
 
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+
+        builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Toast.makeText(getApplicationContext(), "Cancel pressed", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                //Toast.makeText(getApplicationContext(), "Cancel pressed", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        builder.setNegativeButton("Delete", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                createConfrimDialog(drink);
             }
         });
 
@@ -121,6 +149,14 @@ public class DrinksActivity extends AppCompatActivity {
         final View editDialog = getLayoutInflater().inflate(R.layout.dialog_adddrink, null);
         builder.setView(editDialog);
         builder.setTitle("TMP_Add Drink");
+
+        ImageView drinkImage = editDialog.findViewById(R.id.imgDialogAddDrink);
+        drinkImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Clicked Image", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
             @Override
@@ -149,6 +185,28 @@ public class DrinksActivity extends AppCompatActivity {
 
         AlertDialog dialog = builder.create();
 
+        dialog.show();
+    }
+
+    private void createConfrimDialog(Drinks drink) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(DrinksActivity.this, R.style.Theme_AppCompat_Dialog);
+        builder.setTitle("TMP_Are you sure you want to delete " + drink.getName());
+
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(getApplicationContext(), "Cancel pressed", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                drinkViewModel.deleteDrink(drink);
+            }
+        });
+
+        AlertDialog dialog = builder.create();
         dialog.show();
     }
 }

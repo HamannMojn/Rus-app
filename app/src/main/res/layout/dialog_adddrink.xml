@@ -16,6 +16,8 @@
         android:ems="10"
         android:hint="TMP_Drink Name"
         android:inputType="textPersonName"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.532"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,6 +32,8 @@
         android:ems="10"
         android:hint="TMP_DrinkPrice"
         android:inputType="number"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.532"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +46,7 @@
         android:layout_marginTop="8dp"
         android:text="TMP_Drink Name"
         app:layout_constraintStart_toStartOf="@+id/txtDialogEditName"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imgDialogAddDrink" />
 
     <TextView
         android:id="@+id/textView4"
@@ -54,7 +58,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtDialogEditName" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imgDialogAddDrink"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="8dp"

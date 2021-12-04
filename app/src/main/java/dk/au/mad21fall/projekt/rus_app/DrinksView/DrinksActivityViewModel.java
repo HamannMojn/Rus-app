@@ -37,4 +37,6 @@ private MutableLiveData<ArrayList<Drinks>> allDrinks;
     }
 
     public void requestDrinkFromAPI(String drinkName, Context context){ repository.RequestDrinkFromAPI(drinkName, context);}
+
+    public void deleteDrink(Drinks drink) {repository.deleteDrink(drink);}
 }
