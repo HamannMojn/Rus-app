@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+import dk.au.mad21fall.projekt.rus_app.Models.Drinks;
 import dk.au.mad21fall.projekt.rus_app.Models.Tutor;
 import dk.au.mad21fall.projekt.rus_app.Repository;
 
@@ -25,5 +26,11 @@ public class TutorActivityViewModel extends ViewModel {
         tutors = repo.getTutors();
         return tutors;
     }
+
+    public void editTutor(Tutor tutor) {
+        repo.editTutor(tutor);
+    }
+
+    public void deleteTutor(Tutor tutor) {repo.deleteTutor(tutor);}
 
 }

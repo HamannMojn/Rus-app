@@ -133,11 +133,12 @@ public class DrinksActivity extends AppCompatActivity {
         builder.setTitle("TMP_Edit Drink");
 
         //Find views
-        EditText drinkName = editDialog.findViewById(R.id.txtDialogEditName);
+        EditText drinkName = editDialog.findViewById(R.id.txtDialogEditFirstname);
         drinkName.setText(drink.getName());
         EditText drinkPrice = editDialog.findViewById(R.id.txtDialogEditPrice);
         drinkPrice.setText(drink.getPrice() +"");
         image = editDialog.findViewById(R.id.imgDialogAddDrink);
+
         Glide.with(image.getContext()).load(drink.getThumbnailURL()).into(image);
 
 
@@ -186,6 +187,7 @@ public class DrinksActivity extends AppCompatActivity {
 
         image = editDialog.findViewById(R.id.imgDialogAddDrink);
         image.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 chooseImage();
@@ -195,7 +197,7 @@ public class DrinksActivity extends AppCompatActivity {
         builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                EditText drinkName = editDialog.findViewById(R.id.txtDialogEditName);
+                EditText drinkName = editDialog.findViewById(R.id.txtDialogEditFirstname);
                 EditText drinkPrice = editDialog.findViewById(R.id.txtDialogEditPrice);
 
                 Drinks newDrink = new Drinks();

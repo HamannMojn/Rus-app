@@ -18,6 +18,8 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -54,6 +56,7 @@ public class Repository {
     //MutableLiveData<ArrayList<Purchaces>> purchaces;
     MutableLiveData<ArrayList<Drinks>> drinks;
     MutableLiveData<Tutor> tutor;
+    boolean isTutor;
 
     //API
     private RequestQueue queue;
@@ -76,6 +79,54 @@ public class Repository {
         return instance;
     }
 
+    public boolean getCurrentUserIsTutor() {
+        FirebaseUser firebaseUser = auth.getCurrentUser();
+        isTutor = false;
+
+        db.collection("tutors").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot snapshot, @Nullable FirebaseFirestoreException error) {
+                if(snapshot!=null && !snapshot.isEmpty()){
+                    for(DocumentSnapshot doc : snapshot.getDocuments()){
+                        Tutor t = doc.toObject(Tutor.class);
+                        t.setId(doc.getId());
+                        if(t!=null) {
+                            if(t.getEmail() == firebaseUser.getEmail()) {
+                                isTutor = true;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        return isTutor;
+    }
+
+    public boolean getCurrentUserIsAdmin() {
+        FirebaseUser firebaseUser = auth.getCurrentUser();
+        isTutor = false;
+
+        db.collection("tutors").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot snapshot, @Nullable FirebaseFirestoreException error) {
+                if(snapshot!=null && !snapshot.isEmpty()){
+                    for(DocumentSnapshot doc : snapshot.getDocuments()){
+                        Tutor t = doc.toObject(Tutor.class);
+                        t.setId(doc.getId());
+                        if(t!=null) {
+                            if(t.getEmail() == firebaseUser.getEmail() && t.isAdmin()) {
+                                isTutor = true;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        return isTutor;
+    }
+
     public MutableLiveData<ArrayList<Tutor>> getTutors() {
         db.collection("tutors").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -84,6 +135,7 @@ public class Repository {
                 if(snapshot!=null && !snapshot.isEmpty()){
                     for(DocumentSnapshot doc : snapshot.getDocuments()){
                         Tutor t = doc.toObject(Tutor.class);
+                        t.setId(doc.getId());
                         if(t!=null) {
                             updatedTutors.add(t);
                         }
@@ -187,7 +239,48 @@ public class Repository {
     }
 
     public void addTutor(Tutor tutor) {
-        db.collection("tutors").add(tutor);
+        db.collection("tutors").add(tutor)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d(TAG, "added tutor: " + tutor.getFirstName());
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d(TAG, "Adding tutor failed");
+            }
+        });
+    }
+
+    public void editTutor(Tutor tutor) {
+        db.collection("tutors").document(tutor.getId())
+                .set(tutor).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Log.d(TAG, "updated tutor: " + tutor.getFirstName());
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d(TAG, "updating tutor failed");
+            }
+        });
+    }
+
+    public void deleteTutor(Tutor tutor) {
+        db.collection("tutors").document(tutor.getId())
+                .delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Log.d(TAG, "Succesfully deleted "+tutor.getFirstName());
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.w(TAG, "Error deleting"+tutor.getFirstName(), e);
+            }
+        });
     }
 
     public void editDrink(Drinks drink) {
