@@ -186,6 +186,10 @@ public class Repository {
         }
     }
 
+    public void addTutor(Tutor tutor) {
+        db.collection("tutors").add(tutor);
+    }
+
     public void editDrink(Drinks drink) {
     }
 
@@ -197,6 +201,7 @@ public class Repository {
                 if(snapshot!=null && !snapshot.isEmpty()){
                     for(DocumentSnapshot doc : snapshot.getDocuments()){
                         Drinks d = doc.toObject(Drinks.class);
+                        d.setId(doc.getId());
                         if(d!=null) {
                             updatedDrinks.add(d);
                         }
@@ -210,6 +215,17 @@ public class Repository {
     }
 
     public void deleteDrink(Drinks drink) {
-        db.collection("Drinks").document(drink.getName()).delete();
+        db.collection("drinks").document(drink.getId())
+                .delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Log.d(TAG, "Succesfully deleted"+drink.getName());
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.w(TAG, "Error deleting"+drink.getName(), e);
+            }
+        });
     }
 }
