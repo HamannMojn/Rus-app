@@ -154,7 +154,7 @@ public class DrinksActivity extends AppCompatActivity {
                 Drinks tempdrink = drink;
                 tempdrink.setName(drinkName.getText().toString());
                 tempdrink.setPrice(Double.parseDouble(drinkPrice.getText().toString()));
-                //tempdrink.setThumbnailURL(image);
+                tempdrink.setThumbnailURL(imageUrl);
                 drinkViewModel.editDrink(tempdrink);
             }
         });
@@ -184,8 +184,8 @@ public class DrinksActivity extends AppCompatActivity {
         builder.setView(editDialog);
         builder.setTitle("TMP_Add Drink");
 
-        ImageView drinkImage = editDialog.findViewById(R.id.imgDialogAddDrink);
-        drinkImage.setOnClickListener(new View.OnClickListener() {
+        image = editDialog.findViewById(R.id.imgDialogAddDrink);
+        image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 chooseImage();
@@ -202,7 +202,7 @@ public class DrinksActivity extends AppCompatActivity {
                 try {
                     newDrink.setName(drinkName.getText().toString());
                     newDrink.setPrice(Double.parseDouble(drinkPrice.getText().toString()));
-                    newDrink.setThumbnailURL("https://images.daarbak.dk/variant-images/122292/600x600/f2f105cf-4d30-4868-92f0-5c3dce3fa237.png");
+                    newDrink.setThumbnailURL(imageUrl);
                     drinkViewModel.addDrink(newDrink);
                 }catch(NumberFormatException e){
                     Toast.makeText(getApplicationContext(), "Can't add empty drink", Toast.LENGTH_SHORT).show();
