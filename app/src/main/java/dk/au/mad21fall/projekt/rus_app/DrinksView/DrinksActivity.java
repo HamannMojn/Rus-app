@@ -27,6 +27,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -38,10 +39,10 @@ import javax.annotation.Nullable;
 
 import dk.au.mad21fall.projekt.rus_app.Models.Drinks;
 import dk.au.mad21fall.projekt.rus_app.R;
-import dk.au.mad21fall.projekt.rus_app.TutorView.TutorActivity;
 
 public class DrinksActivity extends AppCompatActivity {
     String TAG = "DRINKSACTIVITY";
+    private int PICK_IMAGE_REQUEST = 28364;
 
 
     //widgets
@@ -49,12 +50,18 @@ public class DrinksActivity extends AppCompatActivity {
     private TextView txtAddDrink;
     private DrinksAdapter adapter;
     private RecyclerView rcvList;
+    //private ImageView testImage;
+    private ImageView image;
 
     //Dependencies
     private DrinksActivityViewModel drinkViewModel;
+    FirebaseStorage storage;
+    StorageReference storageReference;
 
     //Data
     private ArrayList<Drinks> drinks = new ArrayList<>();
+    private Uri filePath;
+    private String imageUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,7 +135,7 @@ public class DrinksActivity extends AppCompatActivity {
         drinkName.setText(drink.getName());
         EditText drinkPrice = editDialog.findViewById(R.id.txtDialogEditPrice);
         drinkPrice.setText(drink.getPrice() +"");
-        ImageView image = editDialog.findViewById(R.id.imgDialogAddDrink);
+        image = editDialog.findViewById(R.id.imgDialogAddDrink);
         Glide.with(image.getContext()).load(drink.getThumbnailURL()).into(image);
 
 
@@ -167,7 +174,7 @@ public class DrinksActivity extends AppCompatActivity {
         drinkImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Clicked Image", Toast.LENGTH_SHORT).show();
+                chooseImage();
             }
         });
 
@@ -272,7 +279,7 @@ public class DrinksActivity extends AppCompatActivity {
                                 {
                                     progressDialog.dismiss();
                                     Toast
-                                            .makeText(TutorActivity.this,
+                                            .makeText(DrinksActivity.this,
                                                     "Image Uploaded!!",
                                                     Toast.LENGTH_SHORT)
                                             .show();
@@ -281,7 +288,7 @@ public class DrinksActivity extends AppCompatActivity {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Uri> task) {
                                                     imageUrl = task.getResult().toString();
-                                                    Glide.with(dialogImage.getContext()).load(imageUrl).into(dialogImage);
+                                                    Glide.with(image.getContext()).load(imageUrl).into(image);
                                                     Log.d(TAG, "URL: " + imageUrl);
                                                 }
                                             });
@@ -296,7 +303,7 @@ public class DrinksActivity extends AppCompatActivity {
                             // Error, Image not uploaded
                             progressDialog.dismiss();
                             Toast
-                                    .makeText(TutorActivity.this,
+                                    .makeText(DrinksActivity.this,
                                             "Failed " + e.getMessage(),
                                             Toast.LENGTH_SHORT)
                                     .show();
