@@ -166,6 +166,14 @@ public class DrinksActivity extends AppCompatActivity {
             }
         });
 
+        ImageView drinkImage = editDialog.findViewById(R.id.imgDialogAddDrink);
+        drinkImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                chooseImage();
+            }
+        });
+
         AlertDialog dialog = builder.create();
         dialog.show();
     }
