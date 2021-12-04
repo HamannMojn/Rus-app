@@ -18,4 +18,8 @@
     <string name="login_failed">"Login failed"</string>
     <string name="Create_Team">Create Team</string>
     <string name="Back">Back</string>
+    <string name="Name">Name</string>
+    <string name="Add">Add</string>
+    <string name="createTeam">Create a team</string>
+    <string name="X">X</string>
 </resources>

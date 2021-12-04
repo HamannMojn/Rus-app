@@ -23,13 +23,14 @@ public class LeaderBoardActivity extends AppCompatActivity {
     private RecyclerView rcvTeams;
     private ArrayList<Team> teamsList = new ArrayList<>();
     private Button backBtn, createBtn;
+    private ITeamDeleteBtnClickedListener listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_leader_board);
 
-        adapter = new LeaderboardAdapter(teamsList);
+        adapter = new LeaderboardAdapter(teamsList, listener);
         rcvTeams = findViewById(R.id.leaderboardList);
         rcvTeams.setLayoutManager(new LinearLayoutManager(this));
         rcvTeams.setAdapter(adapter);
@@ -39,6 +40,12 @@ public class LeaderBoardActivity extends AppCompatActivity {
             @Override
             public void onChanged(ArrayList<Team> teams) {
                 adapter.updateList(teams);
+            }
+        });
+        adapter.setOnDeleteClickListener(new ITeamDeleteBtnClickedListener() {
+            @Override
+            public void onDeleteClicked(Team team) {
+                leaderboardViewModel.deleteTeam(team);
             }
         });
 
@@ -57,5 +64,9 @@ public class LeaderBoardActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    public interface ITeamDeleteBtnClickedListener
+    {
+        void onDeleteClicked(Team team);
     }
 }

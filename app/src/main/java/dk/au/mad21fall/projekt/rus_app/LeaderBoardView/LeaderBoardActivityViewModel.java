@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModel;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import dk.au.mad21fall.projekt.rus_app.Models.Team;
 import dk.au.mad21fall.projekt.rus_app.Repository;
@@ -32,5 +33,7 @@ public class LeaderBoardActivityViewModel extends AndroidViewModel {
     public LiveData<ArrayList<Team>> getTeams() {
         return teams;
     }
+
+    public void deleteTeam(Team team) { repo.deleteTeam(team); }
 
 }

@@ -13,6 +13,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -100,6 +102,8 @@ public class Repository {
                 if(snapshot!=null && !snapshot.isEmpty()){
                     for(DocumentSnapshot doc : snapshot.getDocuments()){
                         Team t = doc.toObject(Team.class);
+                        t.setId(doc.getId());
+                        Log.d("GETTEAMS", t.getId());
                         if(t!=null) {
                             updatedTeams.add(t);
                         }
@@ -109,6 +113,24 @@ public class Repository {
             }
         });
         return teams;
+    }
+    public void deleteTeam(Team team){
+        db.collection("teams").document(team.getId())
+                .delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Log.d(TAG, "Succesfully deleted"+team.getName());
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.w(TAG, "Error deleting"+team.getName(), e);
+            }
+        });
+    }
+    public void addTeam(Team team) {
+        Log.d(TAG, "AddTeam: Adding team: " + team.getName());
+        db.collection("teams").add(team);
     }
 
     public void RequestDrinkFromAPI(String drinkName, Context context)

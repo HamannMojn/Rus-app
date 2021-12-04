@@ -1,7 +1,7 @@
 package dk.au.mad21fall.projekt.rus_app.Models;
 
 public class Drinks {
-
+    private String id;
     private String name;
     private double price;
     private String thumbnailURL;
@@ -35,4 +35,9 @@ public class Drinks {
     public void setThumbnailURL(String thumbnailURL) {
         this.thumbnailURL = thumbnailURL;
     }
+
+    public String getId(){return this.id;}
+
+    public void setId(String id){this.id=id;}
+
 }
