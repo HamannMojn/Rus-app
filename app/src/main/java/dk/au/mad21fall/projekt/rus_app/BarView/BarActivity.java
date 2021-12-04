@@ -3,6 +3,7 @@ package dk.au.mad21fall.projekt.rus_app.BarView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -70,7 +71,7 @@ public class BarActivity extends AppCompatActivity {
 
     void buildRecyclerView(){
         recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
+        layoutManager = new GridLayoutManager(this,3 );
         barAdapter = new BarAdapter(displayTutors);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(barAdapter);

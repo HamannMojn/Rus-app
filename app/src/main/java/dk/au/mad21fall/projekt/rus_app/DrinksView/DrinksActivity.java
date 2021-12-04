@@ -5,7 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
@@ -91,7 +91,7 @@ public class DrinksActivity extends AppCompatActivity {
         //Setting up adapter
         adapter = new DrinksAdapter(drinks);
         rcvList = findViewById(R.id.rcvDrinks);
-        rcvList.setLayoutManager(new LinearLayoutManager(this));
+        rcvList.setLayoutManager(new GridLayoutManager(this, 3));
         rcvList.setAdapter(adapter);
 
 

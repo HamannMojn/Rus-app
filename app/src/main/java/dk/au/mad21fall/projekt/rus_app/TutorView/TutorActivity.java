@@ -31,6 +31,7 @@ import java.util.UUID;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import dk.au.mad21fall.projekt.rus_app.AddTutorView.AddTutorActivity;
@@ -106,7 +107,7 @@ public class TutorActivity extends AppCompatActivity {
 
     void buildRecyclerView() {
         recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
+        layoutManager = new GridLayoutManager(this, 3);
         tutorAdapter = new TutorAdapter(displayTutors);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(tutorAdapter);
