@@ -22,4 +22,6 @@
     <string name="Add">Add</string>
     <string name="createTeam">Create a team</string>
     <string name="X">X</string>
+    <string name="AddDrinksToTutor">Add drinks to tutor</string>
+    <string name="drinks">Drink</string>
 </resources>

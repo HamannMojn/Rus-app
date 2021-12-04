@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RusApp">
         <activity
+            android:name=".AddDrinkToTutorView.AddDrinkToTutorActivity"
+            android:exported="true"/>
+        <activity
             android:name=".AddTutorView.AddTutorActivity"
             android:exported="false" />
         <activity
