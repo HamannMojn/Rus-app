@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@drawable/border"
+    android:padding="5dp">
 
     <ImageView
         android:id="@+id/imgDrink"
@@ -28,7 +30,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgDrink"
-        tools:text="GinHazz" />
+        tools:text="GinHazz"
+        android:background="@color/BrownColor"
+        android:textColor="@color/BackgroundColor"/>
 
     <TextView
         android:id="@+id/txtDrinkPrice"
@@ -40,5 +44,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtDrinkName"
-        tools:text="12kr" />
+        tools:text="12kr"
+        android:background="@color/BrownColor"
+        android:textColor="@color/BackgroundColor"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

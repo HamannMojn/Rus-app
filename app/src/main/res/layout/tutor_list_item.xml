@@ -3,30 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@drawable/border"
+    android:padding="5dp">
 
     <ImageView
-        android:id="@+id/listItemImage"
+        android:id="@+id/imgTutor"
         android:layout_width="97dp"
         android:layout_height="96dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/listItemName"
+        android:background="@color/BrownColor"
+        app:layout_constraintBottom_toTopOf="@+id/txtTutorName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/listItemName"
+        android:id="@+id/txtTutorName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
         android:layout_marginTop="12dp"
+        android:background="@color/BrownColor"
         android:text="@string/textview"
+        android:textColor="@color/BackgroundColor"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listItemImage"
+        app:layout_constraintTop_toBottomOf="@+id/imgTutor"
         tools:text="@string/Instructor" />
 </androidx.constraintlayout.widget.ConstraintLayout>
