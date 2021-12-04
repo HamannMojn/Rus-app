@@ -50,7 +50,6 @@ public class DrinksActivity extends AppCompatActivity {
     private TextView txtAddDrink;
     private DrinksAdapter adapter;
     private RecyclerView rcvList;
-    //private ImageView testImage;
     private ImageView image;
 
     //Dependencies
@@ -152,7 +151,11 @@ public class DrinksActivity extends AppCompatActivity {
         builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                //Toast.makeText(getApplicationContext(), "Cancel pressed", Toast.LENGTH_SHORT).show();
+                Drinks tempdrink = drink;
+                tempdrink.setName(drinkName.getText().toString());
+                tempdrink.setPrice(Double.parseDouble(drinkPrice.getText().toString()));
+                //tempdrink.setThumbnailURL(image);
+                drinkViewModel.editDrink(tempdrink);
             }
         });
 
