@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -111,11 +110,11 @@ public class DrinksActivity extends AppCompatActivity {
         builder.setTitle("TMP_Edit Drink");
 
         //Find views
-        EditText drinkName = editDialog.findViewById(R.id.txtDialogEditName);
+        EditText drinkName = editDialog.findViewById(R.id.txtDialogEditFirstname);
         drinkName.setText(drink.getName());
         EditText drinkPrice = editDialog.findViewById(R.id.txtDialogEditPrice);
         drinkPrice.setText(drink.getPrice() +"");
-        ImageView image = editDialog.findViewById(R.id.imgDialogAddDrink);
+        ImageView image = editDialog.findViewById(R.id.imgDialogEditTutor);
         Glide.with(image.getContext()).load(drink.getThumbnailURL()).into(image);
 
 
@@ -150,7 +149,7 @@ public class DrinksActivity extends AppCompatActivity {
         builder.setView(editDialog);
         builder.setTitle("TMP_Add Drink");
 
-        ImageView drinkImage = editDialog.findViewById(R.id.imgDialogAddDrink);
+        ImageView drinkImage = editDialog.findViewById(R.id.imgDialogEditTutor);
         drinkImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -161,7 +160,7 @@ public class DrinksActivity extends AppCompatActivity {
         builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                EditText drinkName = editDialog.findViewById(R.id.txtDialogEditName);
+                EditText drinkName = editDialog.findViewById(R.id.txtDialogEditFirstname);
                 EditText drinkPrice = editDialog.findViewById(R.id.txtDialogEditPrice);
 
                 Drinks newDrink = new Drinks();
