@@ -161,6 +161,22 @@ public class TutorActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Log.d(TAG, "Save pressed in dialog");
+                if(!firstname.getText().toString().isEmpty()) {
+                    tutor.setFirstName(firstname.getText().toString());
+                }
+                if(!lastname.getText().toString().isEmpty()) {
+                    tutor.setLastName(lastname.getText().toString());
+                }
+                if(!tutorName.getText().toString().isEmpty()) {
+                    tutor.setTutorName(tutorName.getText().toString());
+                }
+                if(!email.getText().toString().isEmpty()) {
+                    tutor.setEmail(email.getText().toString());
+                }
+                if(!imageUrl.isEmpty()) {
+                    tutor.setTutorImage(imageUrl);
+                }
+
                 tutorsViewModel.editTutor(tutor);
             }
         });

@@ -192,7 +192,18 @@ public class Repository {
     }
 
     public void editTutor(Tutor tutor) {
-
+        db.collection("tutors").document(tutor.getId())
+                .set(tutor).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Log.d(TAG, "updated tutor: " + tutor.getFirstName());
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d(TAG, "updating tutor failed");
+            }
+        });
     }
 
     public void deleteTutor(Tutor tutor) {
