@@ -1,6 +1,8 @@
 package dk.au.mad21fall.projekt.rus_app.TabView;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,13 +21,17 @@ import dk.au.mad21fall.projekt.rus_app.R;
 
 public class TabAdapter extends RecyclerView.Adapter<TabAdapter.TabViewHolder> {
     private ArrayList<purchaseForTutor> purchases = new ArrayList<>();
-    private String TAG = "PersonalTabAdapter";
+    private String TAG = "TabAdapter";
     private PersonalTabAdapter adapter;
     private RecyclerView recyclerView;
+    private Context context;
 
-    public TabAdapter(ArrayList<purchaseForTutor> _purchases) {
+    public TabAdapter(ArrayList<purchaseForTutor> _purchases, Context _context) {
         purchases = _purchases;
+        context = _context;
     }
+
+    public Context getContext() {return this.getContext();}
 
     @NonNull
     @Override
@@ -40,8 +46,10 @@ public class TabAdapter extends RecyclerView.Adapter<TabAdapter.TabViewHolder> {
         purchaseForTutor purchace = purchases.get(position);
         int placement = position+1;
 
-        holder.rcvPurchases.setLayoutManager(new LinearLayoutManager(this));
+        adapter.updateList(purchace.getPurchases());
+        holder.rcvPurchases.setLayoutManager(new LinearLayoutManager(context));
         holder.rcvPurchases.setAdapter(adapter);
+        holder.tutorName.setText(purchace.getTutorName());
     }
 
     @Override
@@ -50,13 +58,13 @@ public class TabAdapter extends RecyclerView.Adapter<TabAdapter.TabViewHolder> {
     }
 
     public void updateList(ArrayList<purchaseForTutor> list){
+        Log.d(TAG, "" + list.size());
         this.purchases = list;
         notifyDataSetChanged();
     }
 
     public class TabViewHolder extends RecyclerView.ViewHolder {
         TextView tutorName;
-        PersonalTabAdapter adapter;
         RecyclerView rcvPurchases;
         ArrayList<Purchases> purchases = new ArrayList<>();
 

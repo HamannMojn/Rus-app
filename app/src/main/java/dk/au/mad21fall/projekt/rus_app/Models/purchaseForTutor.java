@@ -6,6 +6,11 @@ public class purchaseForTutor {
     private String tutorName;
     private ArrayList<Purchases> purchases;
 
+    public purchaseForTutor(String name) {
+        tutorName = name;
+        purchases = new ArrayList<>();
+    }
+
     public String getTutorName() {
         return tutorName;
     }
@@ -20,5 +25,9 @@ public class purchaseForTutor {
 
     public void setPurchases(ArrayList<Purchases> purchases) {
         this.purchases = purchases;
+    }
+
+    public void addPurchase(Purchases purchase) {
+        purchases.add(purchase);
     }
 }

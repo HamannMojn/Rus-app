@@ -1,7 +1,9 @@
 package dk.au.mad21fall.projekt.rus_app.TabView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,14 +19,15 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import dk.au.mad21fall.projekt.rus_app.Models.Purchases;
+import dk.au.mad21fall.projekt.rus_app.Models.purchaseForTutor;
 import dk.au.mad21fall.projekt.rus_app.PersonalTabView.PersonalTabActivityViewModel;
 import dk.au.mad21fall.projekt.rus_app.PersonalTabView.PersonalTabAdapter;
 import dk.au.mad21fall.projekt.rus_app.R;
 
 public class TabActivity extends AppCompatActivity {
-    private PersonalTabAdapter adapter;
+    private TabAdapter adapter;
     private TabActivityViewModel viewModel;
-    private ArrayList<Purchases> purchaces = new ArrayList<>();
+    private ArrayList<purchaseForTutor> purchaces = new ArrayList<>();
     private Double fullPrice;
     private RecyclerView rcvPurchases;
     private Button backBtn;
@@ -36,7 +39,7 @@ public class TabActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tab);
 
-        adapter = new PersonalTabAdapter(purchaces);
+        adapter = new TabAdapter(purchaces, this);
         rcvPurchases = findViewById(R.id.rvcTabTutor);
         rcvPurchases.setLayoutManager(new LinearLayoutManager(this));
         rcvPurchases.setAdapter(adapter);
@@ -58,7 +61,17 @@ public class TabActivity extends AppCompatActivity {
                         }
                     }
                 });
-                adapter.updateList(purchases);
+                for(Purchases p : purchases) {
+                    int index = nameIndex(p.getTutorName());
+                    if (index == -1) {
+                        purchaseForTutor newTutor = new purchaseForTutor(p.getTutorName());
+                        newTutor.addPurchase(p);
+                        purchaces.add(newTutor);
+                    } else {
+                        purchaces.get(index).addPurchase(p);
+                    }
+                }
+                adapter.updateList(purchaces);
                 fullPrice = 0.0;
                 for(Purchases p : purchases) {
                     fullPrice += p.getDrinkPrice() * p.getAmount();
@@ -75,5 +88,14 @@ public class TabActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    public int nameIndex(String name){
+        for(purchaseForTutor p : purchaces) {
+            if(p.getTutorName().equals(name)) {
+                return purchaces.indexOf(p);
+            }
+        }
+        return -1;
     }
 }
