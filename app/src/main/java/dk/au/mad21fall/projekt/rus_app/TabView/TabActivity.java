@@ -92,8 +92,10 @@ public class TabActivity extends AppCompatActivity {
 
     public int nameIndex(String name){
         for(purchaseForTutor p : purchaces) {
-            if(p.getTutorName().equals(name)) {
-                return purchaces.indexOf(p);
+            if(p.getTutorName()!=null) {
+                if (p.getTutorName().equals(name)) {
+                    return purchaces.indexOf(p);
+                }
             }
         }
         return -1;
