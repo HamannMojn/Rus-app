@@ -29,4 +29,6 @@
     <string name="Ok">Ok</string>
     <string name="AddDrinksToTutor">Add drinks to tutor</string>
     <string name="drinks">Drink</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
 </resources>
