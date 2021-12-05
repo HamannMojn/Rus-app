@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="180dp"
     android:background="@drawable/border"
     android:padding="5dp">
 
@@ -26,13 +26,13 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:background="@color/BrownColor"
         android:text="tmp_DrinksName"
+        android:textColor="@color/BackgroundColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgDrink"
-        tools:text="GinHazz"
-        android:background="@color/BrownColor"
-        android:textColor="@color/BackgroundColor"/>
+        tools:text="GinHazz" />
 
     <TextView
         android:id="@+id/txtDrinkPrice"
@@ -40,12 +40,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
+        android:background="@color/BrownColor"
         android:text="TMP_Price"
+        android:textColor="@color/BackgroundColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtDrinkName"
-        tools:text="12kr"
-        android:background="@color/BrownColor"
-        android:textColor="@color/BackgroundColor"/>
+        tools:text="12kr" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

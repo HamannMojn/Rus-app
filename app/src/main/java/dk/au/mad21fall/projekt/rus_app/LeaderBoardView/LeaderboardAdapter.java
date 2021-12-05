@@ -21,17 +21,17 @@ import dk.au.mad21fall.projekt.rus_app.R;
 public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.LeaderboardViewHolder> {
 
     private List<Team> teams = new ArrayList<>();
-    private LeaderBoardActivity.ITeamDeleteBtnClickedListener listener;
+    private LeaderBoardActivity.ITeamBtnClickedListener listener;
 
 
 
-    public LeaderboardAdapter(ArrayList<Team> _teams, LeaderBoardActivity.ITeamDeleteBtnClickedListener _listener) {
+    public LeaderboardAdapter(ArrayList<Team> _teams, LeaderBoardActivity.ITeamBtnClickedListener _listener) {
         Collections.sort(_teams);
         teams = _teams;
         listener = _listener;
     }
 
-    public void setOnDeleteClickListener(LeaderBoardActivity.ITeamDeleteBtnClickedListener listener ) {this.listener = listener; }
+    public void setOnDeleteClickListener(LeaderBoardActivity.ITeamBtnClickedListener listener ) {this.listener = listener; }
 
     @NonNull
     @Override
@@ -53,7 +53,6 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
         holder.deleteBtn.setOnClickListener(view -> {
             if(listener != null){
                 listener.onDeleteClicked(teams.get(position));
-                remove(position);
             }
         });
     }
@@ -69,7 +68,8 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
         notifyDataSetChanged();
     }
 
-    private void remove(int position){
+    public void remove(Team team){
+        int position = this.teams.indexOf(team);
         this.teams.remove(position);
         notifyItemRemoved(position);
     }
@@ -85,6 +85,18 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
             placement = itemView.findViewById(R.id.leaderboardTeamPlacement);
             cases = itemView.findViewById(R.id.leaderboardTeamCases);
             deleteBtn = itemView.findViewById(R.id.teamListItemDeleteBtn);
+
+            title.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(listener != null){
+                        int position = getAdapterPosition();
+                        if(position != RecyclerView.NO_POSITION){
+                            listener.onTeamClicked(teams.get(position));
+                        }
+                    }
+                }
+            });
         }
     }
 

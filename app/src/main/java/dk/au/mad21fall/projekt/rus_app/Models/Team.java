@@ -29,7 +29,12 @@ public class Team implements Comparable<Team> {
         this.amount = amount;
     }
 
+    public void incrementAmount() {this.amount++;}
+
+    public void decrementAmount() {this.amount--;}
+
     public void setId(String id) {this.id = id;}
+
     public String getId() {return this.id;}
 
     @Override

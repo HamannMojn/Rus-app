@@ -13,6 +13,9 @@
             android:name=".PersonalTabView.PersonalTabActivity"
             android:exported="false" />
         <activity
+            android:name=".AddDrinkToTutorView.AddDrinkToTutorActivity"
+            android:exported="true"/>
+        <activity
             android:name=".AddTutorView.AddTutorActivity"
             android:exported="false" />
         <activity
