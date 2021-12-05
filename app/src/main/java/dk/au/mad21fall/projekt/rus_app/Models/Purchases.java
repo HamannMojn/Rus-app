@@ -5,6 +5,7 @@ public class Purchases {
     private int Amount;
     private String TutorName;
     private String DrinkName;
+    private double drinkPrice;
 
     public Purchases() {
     }
@@ -17,19 +18,27 @@ public class Purchases {
         Amount = amount;
     }
 
-    public String getTutorID() {
+    public String getTutorName() {
         return TutorName;
     }
 
-    public void setTutorID(String tutorID) {
-        TutorName = tutorID;
+    public void setTutorName(String tutorName) {
+        TutorName = tutorName;
     }
 
-    public String getDrinkID() {
+    public String getDrinkName() {
         return DrinkName;
     }
 
-    public void setDrinkID(String drinkID) {
-        DrinkName = drinkID;
+    public void setDrinkName(String drinkName) {
+        DrinkName = drinkName;
+    }
+
+    public double getDrinkPrice() {
+        return drinkPrice;
+    }
+
+    public void setDrinkPrice(double drinkPrice) {
+        this.drinkPrice = drinkPrice;
     }
 }
