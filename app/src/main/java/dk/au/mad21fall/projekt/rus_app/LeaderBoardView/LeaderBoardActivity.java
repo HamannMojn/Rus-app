@@ -103,7 +103,7 @@ public class LeaderBoardActivity extends AppCompatActivity {
         decrement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                team.incrementAmount();
+                team.decrementAmount();
                 amount.setText(Integer.toString(team.getAmount()));
             }
         });
