@@ -20,6 +20,7 @@ import dk.au.mad21fall.projekt.rus_app.DrinksView.DrinksActivity;
 import dk.au.mad21fall.projekt.rus_app.LeaderBoardView.LeaderBoardActivity;
 import dk.au.mad21fall.projekt.rus_app.Models.Tutor;
 import dk.au.mad21fall.projekt.rus_app.R;
+import dk.au.mad21fall.projekt.rus_app.TabView.TabActivity;
 import dk.au.mad21fall.projekt.rus_app.TutorView.TutorActivity;
 
 public class BarActivity extends AppCompatActivity {
@@ -88,8 +89,6 @@ public class BarActivity extends AppCompatActivity {
             }
         });
     }
-
-
 
     private void drinks(){
         Intent drinksActivity = new Intent(this, DrinksActivity.class);

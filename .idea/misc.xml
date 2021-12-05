@@ -25,13 +25,24 @@
         <entry key="..\:/Rus-app/app/src/main/res/layout/tutor_list_item.xml" value="0.5" />
         <entry key="..\:/Users/Hamann/Desktop/RusApp/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/Hamann/Desktop/RusApp/app/src/main/res/layout/list_item.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/activity_add_tutor.xml" value="0.1484375" />
+        <entry key="app/src/main/res/layout/activity_adddrinktotutor.xml" value="0.21265488013936923" />
+        <entry key="app/src/main/res/layout/activity_bar.xml" value="0.24392050304808477" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18333333333333332" />
+        <entry key="app/src/main/res/layout/activity_personal_tab.xml" value="0.1484375" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.16927083333333334" />
+        <entry key="app/src/main/res/layout/activity_tab.xml" value="0.1484375" />
+        <entry key="app/src/main/res/layout/activity_tutor.xml" value="0.1996636957040431" />
         <entry key="app/src/main/res/layout/dialog_adddrink.xml" value="0.15208333333333332" />
         <entry key="app/src/main/res/layout/dialog_edit_team.xml" value="0.15208333333333332" />
         <entry key="app/src/main/res/layout/dialog_edit_tutor.xml" value="0.3321384675130311" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.16927083333333334" />
         <entry key="app/src/main/res/layout/list_item.xml" value="0.18333333333333332" />
+        <entry key="app/src/main/res/layout/tab_item.xml" value="0.23431796481187417" />
+        <entry key="app/src/main/res/layout/tab_list_item.xml" value="0.1787360816507623" />
+        <entry key="app/src/main/res/layout/team_list_item.xml" value="0.1484375" />
+        <entry key="app/src/main/res/layout/tutor_addrink_list_item.xml" value="0.1484375" />
+        <entry key="app/src/main/res/layout/tutor_list_item.xml" value="0.1484375" />
       </map>
     </option>
   </component>

@@ -124,6 +124,26 @@ public class Repository {
         return purchases;
     }
 
+    public MutableLiveData<ArrayList<Purchases>> getPurchases() {
+        db.collection("purchase")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot snapshot, @Nullable FirebaseFirestoreException error) {
+                        ArrayList<Purchases> updatedPurchases = new ArrayList<>();
+                        if(snapshot!=null && !snapshot.isEmpty()){
+                            for(DocumentSnapshot doc : snapshot.getDocuments()){
+                                Purchases p = doc.toObject(Purchases.class);
+                                if(p!=null) {
+                                    updatedPurchases.add(p);
+                                }
+                            }
+                            purchases.setValue(updatedPurchases);
+                        }
+                    }
+                });
+        return purchases;
+    }
+
     public MutableLiveData<ArrayList<Tutor>> getTutors() {
         db.collection("tutors").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
