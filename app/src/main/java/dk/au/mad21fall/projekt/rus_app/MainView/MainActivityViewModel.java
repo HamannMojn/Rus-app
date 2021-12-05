@@ -32,14 +32,13 @@ import dk.au.mad21fall.projekt.rus_app.Repository;
 public class MainActivityViewModel extends AndroidViewModel {
     String TAG = "MainActivityViewModel";
     Repository repo;
-    Tutor tutor;
+    MutableLiveData<Tutor> tutor;
     Context context;
 
     public MainActivityViewModel(Application application) {
         super(application);
         repo = Repository.getRepository(application);
         tutor = repo.getCurrentTutor();
-        Log.d(TAG, "Current tutor is: " + tutor.getFirstName());
         context = application.getApplicationContext();
     }
 
@@ -48,7 +47,7 @@ public class MainActivityViewModel extends AndroidViewModel {
         context.startService(intent);
     }
 
-    public boolean getCurrentUserIsTutor() {
-        return tutor.getFirstName() != null && !tutor.isAdmin();
+    public LiveData<Tutor> getCurrentTutor() {
+        return tutor;
     }
 }
