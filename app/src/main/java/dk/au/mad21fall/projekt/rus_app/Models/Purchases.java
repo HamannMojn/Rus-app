@@ -30,12 +30,13 @@ public class Purchases {
 
     public void setDrinkPrice(double drinkPrice) {
         this.drinkPrice = drinkPrice;
+    }
 
     public int getAmount() {
-        return amount;
+        return Amount;
     }
 
     public void setAmount(int amount) {
-        this.amount = amount;
+        this.Amount = amount;
     }
 }

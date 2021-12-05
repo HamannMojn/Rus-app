@@ -36,10 +36,10 @@ public class PersonalTabAdapter extends RecyclerView.Adapter<PersonalTabAdapter.
         Purchases purchace = purchases.get(position);
         int placement = position+1;
 
-        holder.drinkName.setText(purchace.getDrinksId());
-        holder.price.setText(Double.toString(purchace.getValue()) + " kr");
+        holder.drinkName.setText(purchace.getDrinkName());
+        holder.price.setText(Double.toString(purchace.getDrinkPrice()) + " kr");
         holder.amount.setText(Integer.toString(purchace.getAmount()) + " stk");
-        holder.fullPrice.setText(Double.toString(purchace.getValue() * purchace.getAmount()) + " kr");
+        holder.fullPrice.setText(Double.toString(purchace.getDrinkPrice() * purchace.getAmount()) + " kr");
     }
 
     @Override

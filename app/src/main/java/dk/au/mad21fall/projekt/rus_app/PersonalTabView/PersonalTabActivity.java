@@ -44,7 +44,7 @@ public class PersonalTabActivity extends AppCompatActivity {
                 adapter.updateList(purchases);
                 fullPrice = 0.0;
                 for(Purchases p : purchases) {
-                    fullPrice += p.getValue() * p.getAmount();
+                    fullPrice += p.getDrinkPrice() * p.getAmount();
                 }
             }
         });
