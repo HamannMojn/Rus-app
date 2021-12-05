@@ -185,6 +185,20 @@ public class Repository {
         Log.d(TAG, "AddTeam: Adding team: " + team.getName());
         db.collection("teams").add(team);
     }
+    public void editTeam(Team team) {
+        db.collection("teams").document(team.getId())
+                .set(team).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Log.d(TAG, "updated team: " + team.getName());
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d(TAG, "updating team failed");
+            }
+        });
+    }
 
     public void RequestDrinkFromAPI(String drinkName, Context context)
     {
