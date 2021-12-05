@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Rus-App</string>
-    <string name="instructor" />
     <string name="Instructor">Instructor</string>
     <string name="Beverage_Menu">Beverage Menu</string>
     <string name="beverages">Beverages</string>
@@ -41,4 +40,18 @@
     <string name="appWelcome">Welcome to Rus1-Katrinebjerg bar app</string>
     <string name="drinkName">Drink name</string>
     <string name="drinkPrice">Drink price</string>
+    <string name="editDrink">Edit drink</string>
+    <string name="addDrink">Add drink</string>
+    <string name="sureDelete">Are you sure you want to delete</string>
+    <string name="subtractZero">You can\'t subtract from zero!</string>
+    <string name="No">No</string>
+    <string name="Yes">Yes</string>
+    <string name="Save">Save</string>
+    <string name="emptyDrink">Can\'t add empty drink</string>
+    <string name="cancelPressed">Cancel pressed</string>
+    <string name="imageUploaded">Image uploaded!</string>
+    <string name="failed">Failed:</string>
+    <string name="editTutor">Edit tutor</string>
+    <string name="Delete">Delete</string>
+    <string name="errorAddDrink">Error adding drink</string>
 </resources>

@@ -106,7 +106,7 @@ public class AddDrinkToTutorActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(amount[0] == 0) {
-                    Toast.makeText(AddDrinkToTutorDialog.getContext(), "TMP_You can't subtract from zero!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddDrinkToTutorDialog.getContext(), R.string.subtractZero, Toast.LENGTH_SHORT).show();
                 }
                 else{
                     amount[0]--;
@@ -116,14 +116,14 @@ public class AddDrinkToTutorActivity extends AppCompatActivity {
             }
         });
 
-        builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNeutralButton(R.string.Cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(getApplicationContext(), "Cancel pressed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.cancelPressed, Toast.LENGTH_SHORT).show();
             }
         });
 
-        builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.Add, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 addPurchase(drink.getName(), amount[0], drink.getPrice());

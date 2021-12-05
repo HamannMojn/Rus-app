@@ -127,7 +127,7 @@ public class TutorActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(TutorActivity.this, R.style.Theme_AppCompat_Dialog);
         final View editDialog = getLayoutInflater().inflate(R.layout.dialog_edit_tutor, null);
         builder.setView(editDialog);
-        builder.setTitle("Edit Tutor");
+        builder.setTitle(R.string.editTutor);
 
         //Find views
         EditText firstname = editDialog.findViewById(R.id.txtDialogEditFirstname);
@@ -150,14 +150,14 @@ public class TutorActivity extends AppCompatActivity {
             }
         });
 
-        builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNeutralButton(R.string.Cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Log.d(TAG, "Cancel pressed in dialog");
             }
         });
 
-        builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.Save, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Log.d(TAG, "Save pressed in dialog");
@@ -182,7 +182,7 @@ public class TutorActivity extends AppCompatActivity {
             }
         });
 
-        builder.setNegativeButton("Delete", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.Delete, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 createConfrimDialog(tutor);
@@ -195,16 +195,16 @@ public class TutorActivity extends AppCompatActivity {
 
     private void createConfrimDialog(Tutor tutor) {
         AlertDialog.Builder builder = new AlertDialog.Builder(TutorActivity.this, R.style.Theme_AppCompat_Dialog);
-        builder.setTitle("Are you sure you want to delete " + tutor.getFirstName());
+        builder.setTitle(R.string.sureDelete + tutor.getFirstName());
 
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.No, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Log.d(TAG, "Delete tutor canceled");
             }
         });
 
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.Yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Log.d(TAG, "Delete tutor canceled");

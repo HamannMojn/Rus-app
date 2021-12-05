@@ -108,14 +108,14 @@ public class LeaderBoardActivity extends AppCompatActivity {
             }
         });
 
-        builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNeutralButton(R.string.Cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Log.d("TEAMDIALOG", "Cancel pressed in dialog");
             }
         });
 
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.Ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 leaderboardViewModel.updateTeam(team);
@@ -128,16 +128,16 @@ public class LeaderBoardActivity extends AppCompatActivity {
 
     private void createConfrimDialog(Team team) {
         AlertDialog.Builder builder = new AlertDialog.Builder(LeaderBoardActivity.this, R.style.Theme_AppCompat_Dialog);
-        builder.setTitle("Are you sure you want to delete " + team.getName());
+        builder.setTitle(R.string.sureDelete + team.getName());
 
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.No, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Log.d("LEADERBOARD", "Delete team canceled");
             }
         });
 
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.Yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Log.d("LEADERBOARD", "Delete tutor Succesfulk");

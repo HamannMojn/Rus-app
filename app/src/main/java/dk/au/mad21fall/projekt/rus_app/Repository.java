@@ -230,7 +230,7 @@ public class Repository {
         }
         catch (org.json.JSONException e) {
             Log.d(TAG, "Error: " + e);
-            Toast.makeText(context, "Error adding drink", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.errorAddDrink, Toast.LENGTH_SHORT).show();
             return null;
         }
 

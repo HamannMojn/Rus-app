@@ -34,4 +34,18 @@
     <string name="drinkName">Drink navn</string>
     <string name="drinkPrice">Drink pris</string>
     <string name="Cancel">Afbryd</string>
+    <string name="editDrink">Rediger drink</string>
+    <string name="addDrink">Tilføj drink</string>
+    <string name="sureDelete">Er du sikker på at du vil slette</string>
+    <string name="subtractZero">Du kan ikke trække fra nul</string>
+    <string name="No">Nej</string>
+    <string name="Yes">Ja</string>
+    <string name="Save">Gem</string>
+    <string name="emptyDrink">Kan ikke tilføje tom drink</string>
+    <string name="cancelPressed">Afbrudt</string>
+    <string name="imageUploaded">Billede uploadet</string>
+    <string name="failed">"Fejl: "</string>
+    <string name="editTutor">Rediger tutor</string>
+    <string name="Delete">Slet</string>
+    <string name="errorAddDrink">Fejl i oprettelse af drink</string>
 </resources>
