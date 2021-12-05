@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/leaderboardTeamTitle"
+        android:id="@+id/txtDrinkNameTab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
@@ -49,6 +49,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_delete"
-        tools:ignore="TouchTargetSizeCheck" />
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

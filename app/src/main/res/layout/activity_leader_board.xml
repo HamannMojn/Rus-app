@@ -8,11 +8,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/leaderboardList"
-        android:layout_width="414dp"
-        android:layout_height="601dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/leaderboardBackBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LeaderboardTitle"
@@ -34,22 +33,20 @@
         android:id="@+id/leaderboardBackBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/Back"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/leaderboardList" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/leaderboardBtnCreateTeam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="25dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/Create_Team"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/leaderboardList" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

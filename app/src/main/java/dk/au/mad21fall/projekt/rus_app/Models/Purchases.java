@@ -7,16 +7,6 @@ public class Purchases {
     private String DrinkName;
     private double drinkPrice;
 
-    public Purchases() {
-    }
-
-    public int getAmount() {
-        return Amount;
-    }
-
-    public void setAmount(int amount) {
-        Amount = amount;
-    }
 
     public String getTutorName() {
         return TutorName;
@@ -40,5 +30,12 @@ public class Purchases {
 
     public void setDrinkPrice(double drinkPrice) {
         this.drinkPrice = drinkPrice;
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 }
