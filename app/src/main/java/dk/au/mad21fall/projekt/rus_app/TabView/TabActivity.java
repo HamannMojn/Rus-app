@@ -61,6 +61,7 @@ public class TabActivity extends AppCompatActivity {
                         }
                     }
                 });
+                purchaces.clear();
                 for(Purchases p : purchases) {
                     int index = nameIndex(p.getTutorName());
                     if (index == -1) {
