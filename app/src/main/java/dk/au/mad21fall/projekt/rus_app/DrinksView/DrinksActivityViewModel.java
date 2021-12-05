@@ -18,7 +18,6 @@ import dk.au.mad21fall.projekt.rus_app.Repository;
 
 public class DrinksActivityViewModel extends AndroidViewModel {
 private Repository repository;
-private LiveData<Drinks> drinks;
 private MutableLiveData<ArrayList<Drinks>> allDrinks;
 
     public DrinksActivityViewModel(@NonNull Application application) {

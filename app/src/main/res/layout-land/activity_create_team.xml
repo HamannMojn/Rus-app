@@ -12,7 +12,7 @@
         android:id="@+id/createTeamTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="32dp"
         android:text="@string/createTeam"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,25 +25,25 @@
         android:layout_width="192dp"
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="96dp"
         android:ems="10"
         android:hint="@string/Name"
         android:inputType="textPersonName"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/createTeamNameTitle"
-        app:layout_constraintTop_toBottomOf="@+id/createTeamTitle" />
+        app:layout_constraintTop_toTopOf="@+id/createTeamNameTitle" />
 
     <TextView
         android:id="@+id/createTeamNameTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="292dp"
+        android:layout_marginTop="92dp"
         android:text="@string/Name"
         android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/createTeamBackBtn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"

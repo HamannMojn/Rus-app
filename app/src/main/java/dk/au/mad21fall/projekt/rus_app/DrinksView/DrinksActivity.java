@@ -112,6 +112,9 @@ public class DrinksActivity extends AppCompatActivity {
             }
         });
 
+        //This button has two functions
+        //The first is to open a dialog, to add a drink without the api
+        //The second is to lookup in the api for a drink from name
         btnAddDrink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -131,7 +134,7 @@ public class DrinksActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(DrinksActivity.this, R.style.Theme_AppCompat_Dialog);
         final View editDialog = getLayoutInflater().inflate(R.layout.dialog_adddrink, null);
         builder.setView(editDialog);
-        builder.setTitle("TMP_Edit Drink");
+        builder.setTitle(R.string.editDrink);
 
         //Find views
         EditText drinkName = editDialog.findViewById(R.id.txtDialogEditFirstname);
@@ -143,14 +146,14 @@ public class DrinksActivity extends AppCompatActivity {
         Glide.with(image.getContext()).load(drink.getThumbnailURL()).into(image);
 
 
-        builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNeutralButton(R.string.Cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(getApplicationContext(), "Cancel pressed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.cancelPressed, Toast.LENGTH_SHORT).show();
             }
         });
 
-        builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.Save, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Drinks tempdrink = drink;
@@ -165,7 +168,7 @@ public class DrinksActivity extends AppCompatActivity {
             }
         });
 
-        builder.setNegativeButton("Delete", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.Delete, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 createConfrimDialog(drink);
@@ -184,22 +187,22 @@ public class DrinksActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    //Open Dialog to add new drink without using the API
     private void CreateAddDrinkDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(DrinksActivity.this, R.style.Theme_AppCompat_Dialog);
         final View editDialog = getLayoutInflater().inflate(R.layout.dialog_adddrink, null);
         builder.setView(editDialog);
-        builder.setTitle("TMP_Add Drink");
+        builder.setTitle(R.string.addDrink);
 
         image = editDialog.findViewById(R.id.imgDialogAddDrink);
         image.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 chooseImage();
             }
         });
 
-        builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.Save, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 EditText drinkName = editDialog.findViewById(R.id.txtDialogEditFirstname);
@@ -212,35 +215,34 @@ public class DrinksActivity extends AppCompatActivity {
                     newDrink.setThumbnailURL(imageUrl);
                     drinkViewModel.addDrink(newDrink);
                 }catch(NumberFormatException e){
-                    Toast.makeText(getApplicationContext(), "Can't add empty drink", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.emptyDrink, Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.Cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(getApplicationContext(), "Cancel pressed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.cancelPressed, Toast.LENGTH_SHORT).show();
             }
         });
 
         AlertDialog dialog = builder.create();
-
         dialog.show();
     }
 
     private void createConfrimDialog(Drinks drink) {
         AlertDialog.Builder builder = new AlertDialog.Builder(DrinksActivity.this, R.style.Theme_AppCompat_Dialog);
-        builder.setTitle("TMP_Are you sure you want to delete " + drink.getName());
+        builder.setTitle(R.string.sureDelete + drink.getName());
 
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.No, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(getApplicationContext(), "Cancel pressed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.cancelPressed, Toast.LENGTH_SHORT).show();
             }
         });
 
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.Yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 drinkViewModel.deleteDrink(drink);
@@ -301,7 +303,7 @@ public class DrinksActivity extends AppCompatActivity {
                                     progressDialog.dismiss();
                                     Toast
                                             .makeText(DrinksActivity.this,
-                                                    "Image Uploaded!!",
+                                                    R.string.imageUploaded,
                                                     Toast.LENGTH_SHORT)
                                             .show();
                                     taskSnapshot.getStorage().getDownloadUrl().addOnCompleteListener(
@@ -326,7 +328,7 @@ public class DrinksActivity extends AppCompatActivity {
                             progressDialog.dismiss();
                             Toast
                                     .makeText(DrinksActivity.this,
-                                            "Failed " + e.getMessage(),
+                                            R.string.failed+ e.getMessage(),
                                             Toast.LENGTH_SHORT)
                                     .show();
                         }

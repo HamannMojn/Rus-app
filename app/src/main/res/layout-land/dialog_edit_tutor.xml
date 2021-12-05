@@ -76,17 +76,17 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/firstname"
+        android:layout_marginTop="16dp"
+        android:text="Firstname"
         app:layout_constraintStart_toStartOf="@+id/txtDialogEditFirstname"
-        app:layout_constraintTop_toBottomOf="@+id/imgDialogEditTutor" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/lastname"
+        android:text="Lastname"
         app:layout_constraintStart_toStartOf="@+id/txtDialogEditLastname"
         app:layout_constraintTop_toBottomOf="@+id/txtDialogEditFirstname" />
 
@@ -95,7 +95,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/tutorname"
+        android:text="Tutor Name"
         app:layout_constraintStart_toStartOf="@+id/txtDialogEditTutorName"
         app:layout_constraintTop_toBottomOf="@+id/txtDialogEditLastname" />
 
@@ -103,9 +103,11 @@
         android:id="@+id/imgDialogEditTutor"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.955"
+        app:layout_constraintStart_toEndOf="@+id/txtDialogEditFirstname"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_gallery"
         tools:srcCompat="@android:drawable/ic_menu_gallery" />
@@ -115,7 +117,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/email"
+        android:text="Email"
         app:layout_constraintStart_toStartOf="@+id/txtDialogEditEmail"
         app:layout_constraintTop_toBottomOf="@+id/txtDialogEditTutorName" />
 
@@ -123,11 +125,10 @@
         android:id="@+id/chkAdminEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="Admin"
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
-        app:layout_constraintStart_toStartOf="@+id/txtDialogEditEmail"
-        app:layout_constraintTop_toBottomOf="@+id/txtDialogEditEmail" />
+        app:layout_constraintStart_toStartOf="@+id/imgDialogEditTutor"
+        app:layout_constraintTop_toTopOf="@+id/txtDialogEditTutorName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

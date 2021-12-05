@@ -3,6 +3,7 @@ package dk.au.mad21fall.projekt.rus_app.MainView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +22,7 @@ import androidx.lifecycle.ViewModelProvider;
 import dk.au.mad21fall.projekt.rus_app.BarView.BarActivity;
 import dk.au.mad21fall.projekt.rus_app.LeaderBoardView.LeaderBoardActivity;
 import dk.au.mad21fall.projekt.rus_app.LeaderBoardView.LeaderBoardActivityViewModel;
+import dk.au.mad21fall.projekt.rus_app.NotificationService;
 import dk.au.mad21fall.projekt.rus_app.PersonalTabView.PersonalTabActivity;
 import dk.au.mad21fall.projekt.rus_app.R;
 import dk.au.mad21fall.projekt.rus_app.TutorView.TutorActivity;
@@ -46,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
                 SignIn();
             }
         });
+
+
     }
 
     private void SignIn() {
@@ -85,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void gotoMainApp() {
         boolean isTutor = viewmodel.getCurrentUserIsTutor();
+        viewmodel.StartService();
         Log.d(TAG, "is tutor: " + isTutor);
         if(isTutor) {
             Intent i = new Intent(this, PersonalTabActivity.class);

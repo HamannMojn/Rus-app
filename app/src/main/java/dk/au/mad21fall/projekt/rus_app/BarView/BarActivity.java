@@ -13,11 +13,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.ArrayList;
 
 import dk.au.mad21fall.projekt.rus_app.AddDrinkToTutorView.AddDrinkToTutorActivity;
 import dk.au.mad21fall.projekt.rus_app.DrinksView.DrinksActivity;
 import dk.au.mad21fall.projekt.rus_app.LeaderBoardView.LeaderBoardActivity;
+import dk.au.mad21fall.projekt.rus_app.MainView.MainActivity;
 import dk.au.mad21fall.projekt.rus_app.Models.Tutor;
 import dk.au.mad21fall.projekt.rus_app.R;
 import dk.au.mad21fall.projekt.rus_app.TabView.TabActivity;
@@ -25,13 +28,14 @@ import dk.au.mad21fall.projekt.rus_app.TutorView.TutorActivity;
 
 public class BarActivity extends AppCompatActivity {
 
-    private Button drinksBtn, tutorBtn, leaderboardBtn;
+    private Button drinksBtn, tutorBtn, leaderboardBtn, BtnSignOut;
     private RecyclerView barView;
     private BarActivityViewModel barViewModel;
     private ArrayList<Tutor> displayTutors = new ArrayList<>();
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private BarAdapter barAdapter;
+    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +56,15 @@ public class BarActivity extends AppCompatActivity {
 
         buildRecyclerView();
 
+        BtnSignOut = findViewById(R.id.BtnSignOutTutor);
+
+        BtnSignOut.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                SignOut();
+            }
+        });
+
         barViewModel.getTutors().observe(this, new Observer<ArrayList<Tutor>>() {
             @Override
             public void onChanged(ArrayList<Tutor> tutors) {
@@ -60,6 +73,15 @@ public class BarActivity extends AppCompatActivity {
                 changeScreen();
             }
         });
+    }
+
+    private void SignOut() {
+        if(auth == null){
+            auth = FirebaseAuth.getInstance();
+        }
+        auth.signOut();
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
     }
 
     private void changeScreen() {

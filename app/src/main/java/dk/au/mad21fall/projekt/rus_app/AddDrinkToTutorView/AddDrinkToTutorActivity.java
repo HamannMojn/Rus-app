@@ -32,7 +32,6 @@ public class AddDrinkToTutorActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private AddDrinkToTutorViewModel viewModel;
 
-
     //Data
     int count = 0;
     private ArrayList<Drinks> drinksList = new ArrayList<>();
@@ -54,12 +53,12 @@ public class AddDrinkToTutorActivity extends AppCompatActivity {
                 adapter.updateDrinkList(drinks);
             }
         });
-
         setupUi();
-
     }
 
+    //This setup is setting the recyclerview up with the DrinksAdapter, because they have the same view.
     private void setupUi() {
+        //Adapter + Recyclerview setup
         adapter = new DrinksAdapter(drinksList);
         rcvDrinksList = findViewById(R.id.AddDrinksRcvView);
         rcvDrinksList.setLayoutManager(new GridLayoutManager(this, 3));
@@ -73,6 +72,7 @@ public class AddDrinkToTutorActivity extends AppCompatActivity {
             }
         });
 
+        //Button Setup
         btnReturnToMain = findViewById(R.id.btnReturnToMain);
         btnReturnToMain.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,7 +82,7 @@ public class AddDrinkToTutorActivity extends AppCompatActivity {
         });
     }
 
-
+    //Creating and opening, the Incement/Decrement dialog
     private void AddDrinkToTutorDialog(Drinks drink){
         AlertDialog.Builder builder = new AlertDialog.Builder(AddDrinkToTutorActivity.this, R.style.Theme_AppCompat_Dialog);
         final View AddDrinkToTutorDialog = getLayoutInflater().inflate(R.layout.tutor_addrink_list_item, null);
@@ -106,7 +106,7 @@ public class AddDrinkToTutorActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(amount[0] == 0) {
-                    Toast.makeText(AddDrinkToTutorDialog.getContext(), "TMP_You can't subtract from zero!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddDrinkToTutorDialog.getContext(), R.string.subtractZero, Toast.LENGTH_SHORT).show();
                 }
                 else{
                     amount[0]--;
@@ -116,17 +116,17 @@ public class AddDrinkToTutorActivity extends AppCompatActivity {
             }
         });
 
-        builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNeutralButton(R.string.Cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Toast.makeText(getApplicationContext(), "Cancel pressed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.cancelPressed, Toast.LENGTH_SHORT).show();
             }
         });
 
-        builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.Add, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                addDrinks(drink.getName(), amount[0], drink.getPrice());
+                addPurchase(drink.getName(), amount[0], drink.getPrice());
             }
         });
 
@@ -134,7 +134,8 @@ public class AddDrinkToTutorActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    private void addDrinks(String drinkName, int amount, double drinkPrice) {
+    //Adding a purchase to the database
+    private void addPurchase(String drinkName, int amount, double drinkPrice) {
         viewModel.AddPurchase(drinkName, tutorName, amount, drinkPrice);
     }
 

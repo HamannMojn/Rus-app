@@ -1,12 +1,11 @@
 <resources>
     <string name="app_name">Rus-App</string>
-    <string name="instructor" />
     <string name="Instructor">Instructor</string>
     <string name="Beverage_Menu">Beverage Menu</string>
     <string name="beverages">Beverages</string>
     <string name="leaderboard">Leaderboard</string>
     <string name="Instructors">Instructors</string>
-    <string name="textview">TextView</string>
+    <string name="textview" translatable="false">TextView</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -20,13 +19,39 @@
     <string name="Back">Back</string>
     <string name="Name">Name</string>
     <string name="Add">Add</string>
+    <string name="Cancel">Cancel</string>
     <string name="createTeam">Create a team</string>
-    <string name="X">X</string>
+    <string name="X" translatable="false">X</string>
     <string name="team_name">Team Name</string>
     <string name="Amount">Amount</string>
     <string name="Decrement">Decrement</string>
     <string name="Increment">Increment</string>
-    <string name="Ok">Ok</string>
-    <string name="Return_to_main">Return to Main</string>
-    <string name="drinks">Drink</string>
+    <string name="Ok" translatable="false">Ok</string>
+    <string name="Return_to_main" translatable="false">Return to Main</string>
+    <string name="drinks" translatable="false">Drinks</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="firstname">First name</string>
+    <string name="lastname">Last name</string>
+    <string name="tutorname">Tutor name</string>
+    <string name="email" translatable="false">E-mail</string>
+    <string name="tutors">Tutors</string>
+    <string name="beers">Beers</string>
+    <string name="appWelcome">Welcome to Rus1-Katrinebjerg bar app</string>
+    <string name="drinkName">Drink name</string>
+    <string name="drinkPrice">Drink price</string>
+    <string name="editDrink">Edit drink</string>
+    <string name="addDrink">Add drink</string>
+    <string name="sureDelete">Are you sure you want to delete</string>
+    <string name="subtractZero">You can\'t subtract from zero!</string>
+    <string name="No">No</string>
+    <string name="Yes">Yes</string>
+    <string name="Save">Save</string>
+    <string name="emptyDrink">Can\'t add empty drink</string>
+    <string name="cancelPressed">Cancel pressed</string>
+    <string name="imageUploaded">Image uploaded!</string>
+    <string name="failed">Failed:</string>
+    <string name="editTutor">Edit tutor</string>
+    <string name="Delete">Delete</string>
+    <string name="errorAddDrink">Error adding drink</string>
 </resources>
