@@ -84,11 +84,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void gotoMainApp() {
-        //boolean isTutor = viewmodel.getCurrentUserIsTutor();
-        //boolean isAdmin = viewmodel.getCurrentUserIsAdmin();
-        //Log.d(TAG, "is tutor: " + isTutor);
-        //Log.d(TAG, "is admin: " + isAdmin);
-        if(1 == 1) {
+        boolean isTutor = viewmodel.getCurrentUserIsTutor();
+        boolean isAdmin = viewmodel.getCurrentUserIsAdmin();
+        Log.d(TAG, "is tutor: " + isTutor);
+        Log.d(TAG, "is admin: " + isAdmin);
+        if(isTutor && !isAdmin) {
             Intent i = new Intent(this, PersonalTabActivity.class);
             startActivity(i);
             finish();

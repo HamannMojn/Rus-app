@@ -2,40 +2,41 @@ package dk.au.mad21fall.projekt.rus_app.Models;
 
 public class Purchases {
 
-    private String drinksId;
-    private String tutorId;
-    private int amount;
-    private double value;
+    private int Amount;
+    private String TutorName;
+    private String DrinkName;
+    private double drinkPrice;
 
-    public String getDrinksId() {
-        return drinksId;
+
+    public String getTutorName() {
+        return TutorName;
     }
 
-    public void setDrinksId(String drinksId) {
-        this.drinksId = drinksId;
+    public void setTutorName(String tutorName) {
+        TutorName = tutorName;
     }
 
-    public String getTutorId() {
-        return tutorId;
+    public String getDrinkName() {
+        return DrinkName;
     }
 
-    public void setTutorId(String tutorId) {
-        this.tutorId = tutorId;
+    public void setDrinkName(String drinkName) {
+        DrinkName = drinkName;
+    }
+
+    public double getDrinkPrice() {
+        return drinkPrice;
+    }
+
+    public void setDrinkPrice(double drinkPrice) {
+        this.drinkPrice = drinkPrice;
     }
 
     public int getAmount() {
-        return amount;
+        return Amount;
     }
 
     public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
-    public double getValue() {
-        return value;
-    }
-
-    public void setValue(double value) {
-        this.value = value;
+        this.Amount = amount;
     }
 }

@@ -123,7 +123,7 @@ public class AddDrinkToTutorActivity extends AppCompatActivity {
         builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                addDrinks(drink.getName(), amount[0]);
+                addDrinks(drink.getName(), amount[0], drink.getPrice());
             }
         });
 
@@ -131,8 +131,8 @@ public class AddDrinkToTutorActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    private void addDrinks(String drinkName, int amount) {
-        viewModel.AddPurchase(drinkName, tutorName, amount);
+    private void addDrinks(String drinkName, int amount, double drinkPrice) {
+        viewModel.AddPurchase(drinkName, tutorName, amount, drinkPrice);
     }
 
 }
