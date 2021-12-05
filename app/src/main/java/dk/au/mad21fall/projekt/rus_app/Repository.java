@@ -58,7 +58,7 @@ public class Repository {
     //MutableLiveData<ArrayList<Purchaces>> purchaces;
     MutableLiveData<ArrayList<Drinks>> drinks;
     MutableLiveData<Tutor> tutor;
-    Tutor currentTutor = new Tutor();
+    MutableLiveData<Tutor> currentTutor;
 
     //API
     private RequestQueue queue;
@@ -71,6 +71,7 @@ public class Repository {
         drinks = new MutableLiveData<>();
         tutor = new MutableLiveData<>();
         purchases = new MutableLiveData<>();
+        currentTutor = new MutableLiveData<>();
         //this.context = context;
     }
 
@@ -82,7 +83,7 @@ public class Repository {
         return instance;
     }
 
-    public Tutor getCurrentTutor() {
+    public MutableLiveData<Tutor> getCurrentTutor() {
         FirebaseUser firebaseUser = auth.getCurrentUser();
 
         if(firebaseUser!=null) {
@@ -94,8 +95,7 @@ public class Repository {
                             Tutor t = doc.toObject(Tutor.class);
                             t.setId(doc.getId());
                             if (t != null) {
-                                currentTutor = t;
-                                Log.d(TAG, "Hello, my name is " + currentTutor.getFirstName());
+                                currentTutor.setValue(t);
                             }
                         }
                     }

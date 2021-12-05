@@ -15,12 +15,14 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import dk.au.mad21fall.projekt.rus_app.Models.Purchases;
+import dk.au.mad21fall.projekt.rus_app.Models.Tutor;
 import dk.au.mad21fall.projekt.rus_app.R;
 
 public class PersonalTabActivity extends AppCompatActivity {
     private PersonalTabAdapter adapter;
     private PersonalTabActivityViewModel viewModel;
     private RecyclerView rcvPurchases;
+    private Tutor currentTutor = new Tutor();
     private ArrayList<Purchases> tutorPurchaces = new ArrayList<>();
     private Button backBtn;
     private TextView fullAmount;
@@ -42,7 +44,15 @@ public class PersonalTabActivity extends AppCompatActivity {
         fullAmount = findViewById(R.id.txtFullAmountTab);
 
         viewModel = new ViewModelProvider(this).get(PersonalTabActivityViewModel.class);
-        viewModel.getPurchases().observe(this, new Observer<ArrayList<Purchases>>() {
+
+        viewModel.getCurrentTutor().observe(this, new Observer<Tutor>() {
+            @Override
+            public void onChanged(Tutor tutor) {
+                currentTutor = tutor;
+            }
+        });
+
+        viewModel.getPurchases(currentTutor.getTutorName()).observe(this, new Observer<ArrayList<Purchases>>() {
             @Override
             public void onChanged(ArrayList<Purchases> purchases) {
                 adapter.updateList(purchases);

@@ -18,10 +18,12 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.Arrays;
 import java.util.List;
 
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import dk.au.mad21fall.projekt.rus_app.BarView.BarActivity;
 import dk.au.mad21fall.projekt.rus_app.LeaderBoardView.LeaderBoardActivity;
 import dk.au.mad21fall.projekt.rus_app.LeaderBoardView.LeaderBoardActivityViewModel;
+import dk.au.mad21fall.projekt.rus_app.Models.Tutor;
 import dk.au.mad21fall.projekt.rus_app.NotificationService;
 import dk.au.mad21fall.projekt.rus_app.PersonalTabView.PersonalTabActivity;
 import dk.au.mad21fall.projekt.rus_app.R;
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth auth;
     MainActivityViewModel viewmodel;
     String TAG = "MainActivity";
+    Tutor currentTutor = new Tutor();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +52,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        viewmodel.getCurrentTutor().observe(this, new Observer<Tutor>() {
+            @Override
+            public void onChanged(Tutor tutor) {
+                currentTutor = tutor;
+            }
+        });
     }
 
     private void SignIn() {
@@ -88,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void gotoMainApp() {
-        boolean isTutor = viewmodel.getCurrentUserIsTutor();
+        boolean isTutor = currentTutor != null && !currentTutor.isAdmin();
         viewmodel.StartService();
         Log.d(TAG, "is tutor: " + isTutor);
         if(isTutor) {

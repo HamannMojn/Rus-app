@@ -18,16 +18,18 @@ public class PersonalTabActivityViewModel extends AndroidViewModel {
     String TAG = "LeaderboardActivityViewModel";
     MutableLiveData<ArrayList<Purchases>> purchaces;
     Repository repo;
+    MutableLiveData<Tutor> currentTutor;
 
     public PersonalTabActivityViewModel(Application application) {
         super(application);
         repo = Repository.getRepository(application);
         Log.d(TAG,"Getting all purchases from repo");
-        Tutor currentTutor = repo.getCurrentTutor();
-        purchaces = repo.getPurchasesByTutor(currentTutor.getTutorName());
+        currentTutor = repo.getCurrentTutor();
     }
 
-    public LiveData<ArrayList<Purchases>> getPurchases() {
-        return purchaces;
+    public MutableLiveData<Tutor> getCurrentTutor() {return currentTutor; }
+
+    public LiveData<ArrayList<Purchases>> getPurchases(String name) {
+        return repo.getPurchasesByTutor(name);
     }
 }
