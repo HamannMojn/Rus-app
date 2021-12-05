@@ -1,6 +1,8 @@
 package dk.au.mad21fall.projekt.rus_app.MainView;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -24,20 +26,27 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import dk.au.mad21fall.projekt.rus_app.Models.Team;
 import dk.au.mad21fall.projekt.rus_app.Models.Tutor;
+import dk.au.mad21fall.projekt.rus_app.NotificationService;
 import dk.au.mad21fall.projekt.rus_app.Repository;
 
 public class MainActivityViewModel extends AndroidViewModel {
     String TAG = "MainActivityViewModel";
     Repository repo;
     Tutor tutor;
+    Context context;
 
     public MainActivityViewModel(Application application) {
         super(application);
         repo = Repository.getRepository(application);
         tutor = repo.getCurrentTutor();
         Log.d(TAG, "Current tutor is: " + tutor.getFirstName());
+        context = application.getApplicationContext();
     }
 
+    public void StartService(){
+        Intent intent = new Intent(context, NotificationService.class);
+        context.startService(intent);
+    }
 
     public boolean getCurrentUserIsTutor() {
         return tutor.getFirstName() != null && !tutor.isAdmin();
