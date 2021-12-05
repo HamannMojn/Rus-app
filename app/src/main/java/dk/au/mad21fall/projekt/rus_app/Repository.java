@@ -39,6 +39,7 @@ import org.json.JSONObject;
 
 import dk.au.mad21fall.projekt.rus_app.Models.Drinks;
 
+import dk.au.mad21fall.projekt.rus_app.Models.Purchases;
 import dk.au.mad21fall.projekt.rus_app.Models.Team;
 import dk.au.mad21fall.projekt.rus_app.Models.Tutor;
 
@@ -51,12 +52,13 @@ public class Repository {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     MutableLiveData<ArrayList<Tutor>> tutors;
+    MutableLiveData<ArrayList<Purchases>> purchases;
 
     MutableLiveData<ArrayList<Team>> teams;
     //MutableLiveData<ArrayList<Purchaces>> purchaces;
     MutableLiveData<ArrayList<Drinks>> drinks;
     MutableLiveData<Tutor> tutor;
-    boolean isTutor;
+    Tutor currentTutor = new Tutor();
 
     //API
     private RequestQueue queue;
@@ -68,6 +70,7 @@ public class Repository {
         //purchaces = new MutableLiveData<>();
         drinks = new MutableLiveData<>();
         tutor = new MutableLiveData<>();
+        purchases = new MutableLiveData<>();
         //this.context = context;
     }
 
@@ -79,11 +82,10 @@ public class Repository {
         return instance;
     }
 
-    public boolean getCurrentUserIsTutor() {
+    public Tutor getCurrentTutor() {
         FirebaseUser firebaseUser = auth.getCurrentUser();
-        isTutor = false;
 
-        db.collection("tutors").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        db.collection("tutors").whereEqualTo("email", firebaseUser.getEmail()).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot snapshot, @Nullable FirebaseFirestoreException error) {
                 if(snapshot!=null && !snapshot.isEmpty()){
@@ -91,40 +93,35 @@ public class Repository {
                         Tutor t = doc.toObject(Tutor.class);
                         t.setId(doc.getId());
                         if(t!=null) {
-                            if(t.getEmail() == firebaseUser.getEmail()) {
-                                isTutor = true;
-                            }
+                            currentTutor = t;
+                            Log.d(TAG, "Hello, my name is " + currentTutor.getFirstName());
                         }
                     }
                 }
             }
         });
 
-        return isTutor;
+        return currentTutor;
     }
 
-    public boolean getCurrentUserIsAdmin() {
-        FirebaseUser firebaseUser = auth.getCurrentUser();
-        isTutor = false;
-
-        db.collection("tutors").addSnapshotListener(new EventListener<QuerySnapshot>() {
+    public MutableLiveData<ArrayList<Purchases>> getPurchasesByTutor(String tutorName) {
+        db.collection("purchased").whereEqualTo("tutorId", tutorName)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot snapshot, @Nullable FirebaseFirestoreException error) {
+                ArrayList<Purchases> updatedPurchases = new ArrayList<>();
                 if(snapshot!=null && !snapshot.isEmpty()){
                     for(DocumentSnapshot doc : snapshot.getDocuments()){
-                        Tutor t = doc.toObject(Tutor.class);
-                        t.setId(doc.getId());
-                        if(t!=null) {
-                            if(t.getEmail() == firebaseUser.getEmail() && t.isAdmin()) {
-                                isTutor = true;
-                            }
+                        Purchases p = doc.toObject(Purchases.class);
+                        if(p!=null) {
+                            updatedPurchases.add(p);
                         }
                     }
+                    purchases.setValue(updatedPurchases);
                 }
             }
         });
-
-        return isTutor;
+        return purchases;
     }
 
     public MutableLiveData<ArrayList<Tutor>> getTutors() {
@@ -322,6 +319,27 @@ public class Repository {
         return drinks;
     }
 
+    public MutableLiveData<ArrayList<Drinks>> getDrink(String drinkName) {
+        db.collection("drinks").whereEqualTo("name", drinkName)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        ArrayList<Drinks> updatedDrinks = new ArrayList<>();
+                        if(value!=null && !value.isEmpty()){
+                            for(DocumentSnapshot doc : value.getDocuments()){
+                                Drinks d = doc.toObject(Drinks.class);
+                                d.setId(doc.getId());
+                                if(d!=null) {
+                                    updatedDrinks.add(d);
+                                }
+                            }
+                            drinks.setValue(updatedDrinks);
+                        }
+                    }
+                });
+        return drinks;
+    }
+
     public void deleteDrink(Drinks drink) {
         db.collection("drinks").document(drink.getId())
                 .delete().addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -333,6 +351,41 @@ public class Repository {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Log.w(TAG, "Error deleting"+drink.getName(), e);
+            }
+        });
+    }
+
+    public void AddPurchase(Purchases purchases) {
+        db.collection("purchase").add(purchases)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d(TAG, "added purchases");
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d(TAG, "Adding purchase failed");
+            }
+        });
+    }
+
+    public void AddPurchase(String drinkId, String tutorId, int amount) {
+
+        Purchases tmpPurchases = new Purchases();
+        tmpPurchases.setAmount(amount);
+        tmpPurchases.setDrinkID(drinkId);
+        tmpPurchases.setTutorID(tutorId);
+
+        db.collection("purchase").add(tmpPurchases).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+            @Override
+            public void onSuccess(DocumentReference documentReference) {
+                Log.d(TAG, "added purchases");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d(TAG, "Adding purchase failed");
             }
         });
     }

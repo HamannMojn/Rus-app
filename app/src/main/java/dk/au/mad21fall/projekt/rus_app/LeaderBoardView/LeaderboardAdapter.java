@@ -81,7 +81,7 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
         public LeaderboardViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            title = itemView.findViewById(R.id.leaderboardTeamTitle);
+            title = itemView.findViewById(R.id.txtDrinkNameTab);
             placement = itemView.findViewById(R.id.leaderboardTeamPlacement);
             cases = itemView.findViewById(R.id.leaderboardTeamCases);
             deleteBtn = itemView.findViewById(R.id.teamListItemDeleteBtn);

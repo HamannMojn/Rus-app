@@ -10,8 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 import dk.au.mad21fall.projekt.rus_app.Models.Drinks;
@@ -43,7 +41,7 @@ public class AddDrinkToTutorAdapter extends RecyclerView.Adapter<AddDrinkToTutor
     @Override
     public AddDrinksViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v;
-        v = LayoutInflater.from(parent.getContext()).inflate(R.layout.dialog_items, parent, false);
+        v = LayoutInflater.from(parent.getContext()).inflate(R.layout.tutor_addrink_list_item, parent, false);
         AddDrinkToTutorAdapter.AddDrinksViewHolder vh = new AddDrinkToTutorAdapter.AddDrinksViewHolder(v);
 
         btnMinus = (Button) v.findViewById(R.id.remove_DrinkFromTutor);
@@ -93,7 +91,7 @@ public class AddDrinkToTutorAdapter extends RecyclerView.Adapter<AddDrinkToTutor
 
         public AddDrinksViewHolder(@NonNull View itemView) {
             super(itemView);
-            txtDrinkName = itemView.findViewById(R.id.bar_DrinkName);
+            //txtDrinkName = itemView.findViewById(R.id.bar_DrinkName);
             txtAmount = itemView.findViewById(R.id.bar_DrinksAmount);
         }
     }

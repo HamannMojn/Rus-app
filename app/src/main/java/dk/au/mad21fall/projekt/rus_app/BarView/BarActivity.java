@@ -51,13 +51,6 @@ public class BarActivity extends AppCompatActivity {
 
         buildRecyclerView();
 
-        barAdapter.setOnItemClickListener(new BarAdapter.BarItemClickedListener() {
-            @Override
-            public void onBarClicked(Tutor tutor) {
-                addDrinksToTutor();
-            }
-        });
-
         barViewModel.getTutors().observe(this, new Observer<ArrayList<Tutor>>() {
             @Override
             public void onChanged(ArrayList<Tutor> tutors) {
@@ -66,11 +59,6 @@ public class BarActivity extends AppCompatActivity {
                 changeScreen();
             }
         });
-    }
-
-    private void addDrinksToTutor() {
-        Intent addDrinksToTutorActivity = new Intent(this, AddDrinkToTutorActivity.class);
-        startActivity(addDrinksToTutorActivity);
     }
 
     private void changeScreen() {
@@ -93,7 +81,10 @@ public class BarActivity extends AppCompatActivity {
         barAdapter.setOnItemClickListener(new BarAdapter.BarItemClickedListener() {
             @Override
             public void onBarClicked(Tutor tutor) {
-
+                Intent intentDrinkToTutor = new Intent(BarActivity.this, AddDrinkToTutorActivity.class);
+                intentDrinkToTutor.putExtra("intent_id",tutor.getTutorName());
+                Log.d("TAG", "onBarClicked: " + tutor.getTutorName());
+                startActivity(intentDrinkToTutor);
             }
         });
     }
