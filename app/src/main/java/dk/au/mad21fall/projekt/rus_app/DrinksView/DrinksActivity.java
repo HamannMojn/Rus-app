@@ -61,6 +61,7 @@ public class DrinksActivity extends AppCompatActivity {
     private ArrayList<Drinks> drinks = new ArrayList<>();
     private Uri filePath;
     private String imageUrl;
+    private boolean thumbnailChanged = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -155,7 +156,11 @@ public class DrinksActivity extends AppCompatActivity {
                 Drinks tempdrink = drink;
                 tempdrink.setName(drinkName.getText().toString());
                 tempdrink.setPrice(Double.parseDouble(drinkPrice.getText().toString()));
-                tempdrink.setThumbnailURL(imageUrl);
+                if(thumbnailChanged == true)
+                {
+                    tempdrink.setThumbnailURL(imageUrl);
+                    thumbnailChanged = false;
+                }
                 drinkViewModel.editDrink(tempdrink);
             }
         });
@@ -305,6 +310,7 @@ public class DrinksActivity extends AppCompatActivity {
                                                 public void onComplete(@NonNull Task<Uri> task) {
                                                     imageUrl = task.getResult().toString();
                                                     Glide.with(image.getContext()).load(imageUrl).into(image);
+                                                    thumbnailChanged = true;
                                                     Log.d(TAG, "URL: " + imageUrl);
                                                 }
                                             });

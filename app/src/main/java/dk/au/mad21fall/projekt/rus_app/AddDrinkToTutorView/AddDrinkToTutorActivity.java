@@ -26,7 +26,7 @@ import dk.au.mad21fall.projekt.rus_app.R;
 
 public class AddDrinkToTutorActivity extends AppCompatActivity {
     String TAG = "ADDDRINKSTOTUTOR";
-    private Button btnAddDrinks;
+    private Button btnReturnToMain;
     private RecyclerView rcvDrinksList;
     private DrinksAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -52,15 +52,14 @@ public class AddDrinkToTutorActivity extends AppCompatActivity {
             public void onChanged(@Nullable ArrayList<Drinks> drinks) {
                 adapter.setDrink(drinks);
                 adapter.updateDrinkList(drinks);
-
             }
         });
 
-        buildRcv();
+        setupUi();
 
     }
 
-    private void buildRcv() {
+    private void setupUi() {
         adapter = new DrinksAdapter(drinksList);
         rcvDrinksList = findViewById(R.id.AddDrinksRcvView);
         rcvDrinksList.setLayoutManager(new GridLayoutManager(this, 3));
@@ -71,7 +70,14 @@ public class AddDrinkToTutorActivity extends AppCompatActivity {
             public void onDrinkClicked(Drinks drinks) {
                 Log.d(TAG, "onDrinkClicked: " + drinks.getName());
                 AddDrinkToTutorDialog(drinks);
-                //Log.d(TAG, "onDrinkClicked: " + drinks.getName());
+            }
+        });
+
+        btnReturnToMain = findViewById(R.id.btnReturnToMain);
+        btnReturnToMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }
@@ -109,9 +115,6 @@ public class AddDrinkToTutorActivity extends AppCompatActivity {
                 Log.d(TAG, "Decrement onClick: " + amount[0]);
             }
         });
-
-        //drinkName.setText("FremMedPikken!");
-
 
         builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
