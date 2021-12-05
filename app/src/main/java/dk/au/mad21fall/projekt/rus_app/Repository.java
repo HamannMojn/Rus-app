@@ -355,27 +355,13 @@ public class Repository {
         });
     }
 
-    public void AddPurchase(Purchases purchases) {
-        db.collection("purchase").add(purchases)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        Log.d(TAG, "added purchases");
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.d(TAG, "Adding purchase failed");
-            }
-        });
-    }
-
-    public void AddPurchase(String drinkId, String tutorId, int amount) {
+    public void AddPurchase(String drinkName, String tutorName, int amount, double drinkPrice) {
 
         Purchases tmpPurchases = new Purchases();
+        tmpPurchases.setDrinkPrice(drinkPrice);
         tmpPurchases.setAmount(amount);
-        tmpPurchases.setDrinkID(drinkId);
-        tmpPurchases.setTutorID(tutorId);
+        tmpPurchases.setDrinkName(drinkName);
+        tmpPurchases.setTutorName(tutorName);
 
         db.collection("purchase").add(tmpPurchases).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
             @Override
