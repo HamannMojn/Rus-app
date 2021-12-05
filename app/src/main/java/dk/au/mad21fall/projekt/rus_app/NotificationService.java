@@ -50,7 +50,7 @@ public class NotificationService extends LifecycleService {
             @Override
             public void onChanged(ArrayList<Purchases> _purchases) {
                 for (Purchases purchase : _purchases) {
-                    tab = tab+purchase.getDrinkPrice();
+                    tab = tab+(purchase.getDrinkPrice()*purchase.getAmount());
                 }
             }
         });

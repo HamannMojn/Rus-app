@@ -126,7 +126,7 @@ public class Repository {
         return purchases;
     }
 
-    public MutableLiveData<ArrayList<Purchases>> getPurchases() {
+    public LiveData<ArrayList<Purchases>> getPurchases() {
         db.collection("purchase")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
