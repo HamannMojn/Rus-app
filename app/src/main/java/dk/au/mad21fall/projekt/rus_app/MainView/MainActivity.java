@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             FirebaseUser firebaseUser = auth.getCurrentUser();
 
             if (firebaseUser != null) {
-                Log.d("JaGoP nYmAnN", ""+firebaseUser.getEmail());
+                Log.d(TAG, ""+firebaseUser.getEmail());
             }
             gotoMainApp();
         } else {
