@@ -30,10 +30,9 @@ public class NotificationService extends LifecycleService {
     private Repository repo;
     private static boolean running = false;
     private Tutor user;
-    private Double tab;
+    private Double tab = 0.0;
     private Notification builder;
     private NotificationManager manager;
-    private ArrayList<Purchases> purchases;
     ExecutorService executor;
 
     public NotificationService(){}
@@ -46,14 +45,11 @@ public class NotificationService extends LifecycleService {
         super.onStartCommand(intent, flags, startId);
 
         repo = Repository.getRepository(getApplication());
-        user = repo.getCurrentTutor();
-        Log.d("Tutor", user.getTutorName());
-        repo.getPurchasesByTutor(user.getTutorName()).observe(this, new Observer<ArrayList<Purchases>>() {
+
+        repo.getPurchases().observe(this, new Observer<ArrayList<Purchases>>() {
             @Override
             public void onChanged(ArrayList<Purchases> _purchases) {
-
-                purchases = _purchases;
-                for (Purchases purchase : purchases) {
+                for (Purchases purchase : _purchases) {
                     tab = tab+purchase.getDrinkPrice();
                 }
             }
@@ -66,7 +62,7 @@ public class NotificationService extends LifecycleService {
 
         Notification notification = new NotificationCompat.Builder(this, "Service Channel")
                 .setContentTitle("Rus App Tab update")
-                .setContentText("Your current tab will show here" + tab)
+                .setContentText("The current tab will show here" + tab)
                 .setTicker("Rus App Tab update")
                 .setSmallIcon(R.drawable.ic_launcher_foreground)
                 .build();
@@ -101,7 +97,7 @@ public class NotificationService extends LifecycleService {
 
                     Notification notification = new NotificationCompat.Builder(context, "Service Channel")
                             .setContentTitle("Rus App Tab update")
-                            .setContentText("Your current tab is: "+tab)
+                            .setContentText("The current tab is: "+tab)
                             .setTicker("Rus App Tab update")
                             .setSmallIcon(R.drawable.ic_launcher_foreground)
                             .build();
