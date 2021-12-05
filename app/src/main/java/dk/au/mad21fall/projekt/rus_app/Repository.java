@@ -52,12 +52,13 @@ public class Repository {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     MutableLiveData<ArrayList<Tutor>> tutors;
+    MutableLiveData<ArrayList<Purchases>> purchases;
 
     MutableLiveData<ArrayList<Team>> teams;
     //MutableLiveData<ArrayList<Purchaces>> purchaces;
     MutableLiveData<ArrayList<Drinks>> drinks;
     MutableLiveData<Tutor> tutor;
-    boolean isTutor;
+    Tutor currentTutor = new Tutor();
 
     //API
     private RequestQueue queue;
@@ -69,6 +70,7 @@ public class Repository {
         //purchaces = new MutableLiveData<>();
         drinks = new MutableLiveData<>();
         tutor = new MutableLiveData<>();
+        purchases = new MutableLiveData<>();
         //this.context = context;
     }
 
@@ -80,11 +82,10 @@ public class Repository {
         return instance;
     }
 
-    public boolean getCurrentUserIsTutor() {
+    public Tutor getCurrentTutor() {
         FirebaseUser firebaseUser = auth.getCurrentUser();
-        isTutor = false;
 
-        db.collection("tutors").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        db.collection("tutors").whereEqualTo("email", firebaseUser.getEmail()).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot snapshot, @Nullable FirebaseFirestoreException error) {
                 if(snapshot!=null && !snapshot.isEmpty()){
@@ -92,40 +93,35 @@ public class Repository {
                         Tutor t = doc.toObject(Tutor.class);
                         t.setId(doc.getId());
                         if(t!=null) {
-                            if(t.getEmail() == firebaseUser.getEmail()) {
-                                isTutor = true;
-                            }
+                            currentTutor = t;
+                            Log.d(TAG, "Hello, my name is " + currentTutor.getFirstName());
                         }
                     }
                 }
             }
         });
 
-        return isTutor;
+        return currentTutor;
     }
 
-    public boolean getCurrentUserIsAdmin() {
-        FirebaseUser firebaseUser = auth.getCurrentUser();
-        isTutor = false;
-
-        db.collection("tutors").addSnapshotListener(new EventListener<QuerySnapshot>() {
+    public MutableLiveData<ArrayList<Purchases>> getPurchasesByTutor(String tutorName) {
+        db.collection("purchased").whereEqualTo("tutorId", tutorName)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot snapshot, @Nullable FirebaseFirestoreException error) {
+                ArrayList<Purchases> updatedPurchases = new ArrayList<>();
                 if(snapshot!=null && !snapshot.isEmpty()){
                     for(DocumentSnapshot doc : snapshot.getDocuments()){
-                        Tutor t = doc.toObject(Tutor.class);
-                        t.setId(doc.getId());
-                        if(t!=null) {
-                            if(t.getEmail() == firebaseUser.getEmail() && t.isAdmin()) {
-                                isTutor = true;
-                            }
+                        Purchases p = doc.toObject(Purchases.class);
+                        if(p!=null) {
+                            updatedPurchases.add(p);
                         }
                     }
+                    purchases.setValue(updatedPurchases);
                 }
             }
         });
-
-        return isTutor;
+        return purchases;
     }
 
     public MutableLiveData<ArrayList<Tutor>> getTutors() {
@@ -185,6 +181,20 @@ public class Repository {
     public void addTeam(Team team) {
         Log.d(TAG, "AddTeam: Adding team: " + team.getName());
         db.collection("teams").add(team);
+    }
+    public void editTeam(Team team) {
+        db.collection("teams").document(team.getId())
+                .set(team).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Log.d(TAG, "updated team: " + team.getName());
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d(TAG, "updating team failed");
+            }
+        });
     }
 
     public void RequestDrinkFromAPI(String drinkName, Context context)
@@ -306,6 +316,27 @@ public class Repository {
             }
         });
         Log.d(TAG, "getDrinks: ");
+        return drinks;
+    }
+
+    public MutableLiveData<ArrayList<Drinks>> getDrink(String drinkName) {
+        db.collection("drinks").whereEqualTo("name", drinkName)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        ArrayList<Drinks> updatedDrinks = new ArrayList<>();
+                        if(value!=null && !value.isEmpty()){
+                            for(DocumentSnapshot doc : value.getDocuments()){
+                                Drinks d = doc.toObject(Drinks.class);
+                                d.setId(doc.getId());
+                                if(d!=null) {
+                                    updatedDrinks.add(d);
+                                }
+                            }
+                            drinks.setValue(updatedDrinks);
+                        }
+                    }
+                });
         return drinks;
     }
 

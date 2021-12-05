@@ -35,5 +35,5 @@ public class LeaderBoardActivityViewModel extends AndroidViewModel {
     }
 
     public void deleteTeam(Team team) { repo.deleteTeam(team); }
-
+    public void updateTeam(Team team) { repo.editTeam(team); }
 }
