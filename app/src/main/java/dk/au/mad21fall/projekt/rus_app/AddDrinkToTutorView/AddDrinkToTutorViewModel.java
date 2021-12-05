@@ -32,7 +32,7 @@ public class AddDrinkToTutorViewModel extends AndroidViewModel {
 
     public LiveData<ArrayList<Drinks>> getAllDrinks(){return allDrinks;}
 
-    public void AddPurchase(String drinkId, String tutorID,int amount) {repository.AddPurchase(drinkId,tutorID,amount);
+    public void AddPurchase(String drinkId, String tutorID,int amount, double drinkPrice) {repository.AddPurchase(drinkId,tutorID,amount, drinkPrice);
     }
 
 }
