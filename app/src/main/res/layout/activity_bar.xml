@@ -39,7 +39,7 @@
 
     <Button
         android:id="@+id/gotoDrinksBtn"
-        android:layout_width="120dp"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
@@ -49,11 +49,11 @@
 
     <Button
         android:id="@+id/gotoLeaderboardBtn"
-        android:layout_width="120dp"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:text="Ølkasser"
+        android:text="Kasser"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -66,7 +66,7 @@
 
     <Button
         android:id="@+id/gotoTutorBtn"
-        android:layout_width="120dp"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:text="Tutorer"
