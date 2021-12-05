@@ -35,17 +35,11 @@ public class MainActivityViewModel extends AndroidViewModel {
         super(application);
         repo = Repository.getRepository(application);
         tutor = repo.getCurrentTutor();
-        if(tutor!=null) {
-            Log.d(TAG, "Current tutor is: " + tutor.getFirstName());
-        }
+        Log.d(TAG, "Current tutor is: " + tutor.getFirstName());
     }
 
 
     public boolean getCurrentUserIsTutor() {
-        return tutor!=null;
-    }
-
-    public boolean getCurrentUserIsAdmin() {
-        return tutor!=null && tutor.isAdmin();
+        return tutor.getFirstName() != null && !tutor.isAdmin();
     }
 }
