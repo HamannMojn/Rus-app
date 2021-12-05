@@ -17,17 +17,18 @@ import dk.au.mad21fall.projekt.rus_app.Repository;
 
 public class TabActivityViewModel extends AndroidViewModel {
     String TAG = "LeaderboardActivityViewModel";
-    MutableLiveData<ArrayList<Purchases>> purchaces;
+    LiveData<ArrayList<Purchases>> purchaces;
     Repository repo;
 
     public TabActivityViewModel(Application application) {
         super(application);
         repo = Repository.getRepository(application);
         Log.d(TAG,"Getting all purchases from repo");
-        purchaces = repo.getPurchases();
+
     }
 
     public LiveData<ArrayList<Purchases>> getPurchases() {
+        purchaces = repo.getPurchases();
         return purchaces;
     }
 }
