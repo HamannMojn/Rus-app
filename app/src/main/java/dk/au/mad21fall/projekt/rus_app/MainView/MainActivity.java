@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 String dinMor = auth.getCurrentUser().getUid();
 
-                Toast.makeText(this, "DinMor logged in\n"+dinMor, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.login +dinMor, Toast.LENGTH_SHORT).show();
                 gotoMainApp();
             }
         }
