@@ -33,7 +33,14 @@
         <entry key="..\:/Rus-app/app/src/main/res/layout/tutor_list_item.xml" value="0.5" />
         <entry key="..\:/Users/Hamann/Desktop/RusApp/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/Hamann/Desktop/RusApp/app/src/main/res/layout/list_item.xml" value="0.5" />
+        <entry key="app/src/main/res/layout-land/activity_personal_tab.xml" value="0.47995534700745096" />
+        <entry key="app/src/main/res/layout-sw600dp/activity_add_tutor.xml" value="0.24469082554667743" />
+        <entry key="app/src/main/res/layout-sw600dp/activity_leader_board.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-sw600dp/activity_personal_tab.xml" value="0.10538330078125001" />
+        <entry key="app/src/main/res/layout-sw600dp/activity_tutor.xml" value="0.108203125" />
+        <entry key="app/src/main/res/layout/activity_leader_board.xml" value="0.14427083333333332" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18333333333333332" />
+        <entry key="app/src/main/res/layout/activity_personal_tab.xml" value="0.21663429389466712" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.16927083333333334" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.16927083333333334" />
         <entry key="app/src/main/res/layout/list_item.xml" value="0.18333333333333332" />

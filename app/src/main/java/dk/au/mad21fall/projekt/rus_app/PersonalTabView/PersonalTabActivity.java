@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import dk.au.mad21fall.projekt.rus_app.LeaderBoardView.LeaderBoardActivity;
 import dk.au.mad21fall.projekt.rus_app.MainView.MainActivity;
 import dk.au.mad21fall.projekt.rus_app.Models.Purchases;
 import dk.au.mad21fall.projekt.rus_app.Models.Tutor;
@@ -29,7 +30,7 @@ public class PersonalTabActivity extends AppCompatActivity {
     private RecyclerView rcvPurchases;
     private Tutor currentTutor = new Tutor();
     private ArrayList<Purchases> tutorPurchaces = new ArrayList<>();
-    private Button backBtn, btnSignOut;
+    private Button leaderboardBtn, btnSignOut;
     private TextView fullAmount;
     private Double fullPrice;
     private String TAG = "PersonalTabActivity";
@@ -71,11 +72,11 @@ public class PersonalTabActivity extends AppCompatActivity {
             }
         });
 
-        backBtn = findViewById(R.id.btnBackTab);
-        backBtn.setOnClickListener(new View.OnClickListener() {
+        leaderboardBtn = findViewById(R.id.btnGoToLeaderboard);
+        leaderboardBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                GoToLeaderboard();
             }
         });
 
@@ -95,5 +96,10 @@ public class PersonalTabActivity extends AppCompatActivity {
         auth.signOut();
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
+    }
+
+    private void GoToLeaderboard() {
+        Intent leaderboardActivity = new Intent(this, LeaderBoardActivity.class);
+        startActivity(leaderboardActivity);
     }
 }

@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".PersonalTabView.PersonalTabActivity">
 
+    <Button
+        android:id="@+id/btnSignOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/logout"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnGoToLeaderboard"
+        app:layout_constraintTop_toBottomOf="@+id/rvcTab"
+        app:layout_constraintVertical_bias="0.0" />
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -24,14 +37,14 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnCancelTab"
+        app:layout_constraintBottom_toTopOf="@+id/btnGoToLeaderboard"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         tools:listitem="@layout/tab_list_item" />
 
     <Button
-        android:id="@+id/btnCancelTab"
+        android:id="@+id/btnGoToLeaderboard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -48,6 +61,6 @@
         android:layout_marginEnd="16dp"
         android:text="I Alt: 0 kr"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnCancelTab"
+        app:layout_constraintBottom_toBottomOf="@+id/btnGoToLeaderboard"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

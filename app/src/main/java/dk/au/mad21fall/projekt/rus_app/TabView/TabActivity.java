@@ -1,9 +1,7 @@
 package dk.au.mad21fall.projekt.rus_app.TabView;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,8 +18,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import dk.au.mad21fall.projekt.rus_app.Models.Purchases;
 import dk.au.mad21fall.projekt.rus_app.Models.purchaseForTutor;
-import dk.au.mad21fall.projekt.rus_app.PersonalTabView.PersonalTabActivityViewModel;
-import dk.au.mad21fall.projekt.rus_app.PersonalTabView.PersonalTabAdapter;
 import dk.au.mad21fall.projekt.rus_app.R;
 
 public class TabActivity extends AppCompatActivity {
@@ -82,7 +78,7 @@ public class TabActivity extends AppCompatActivity {
             }
         });
 
-        backBtn = findViewById(R.id.btnBackTab);
+        backBtn = findViewById(R.id.btnGoToLeaderboard);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
