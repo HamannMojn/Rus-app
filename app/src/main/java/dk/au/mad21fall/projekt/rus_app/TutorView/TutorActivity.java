@@ -38,6 +38,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import dk.au.mad21fall.projekt.rus_app.AddTutorView.AddTutorActivity;
 import dk.au.mad21fall.projekt.rus_app.Models.Tutor;
 import dk.au.mad21fall.projekt.rus_app.R;
+import dk.au.mad21fall.projekt.rus_app.TabView.TabActivity;
 
 public class TutorActivity extends AppCompatActivity {
     private String TAG = "TUTOR_VIEW";
@@ -49,6 +50,7 @@ public class TutorActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private Button addBtn;
     private Button backBtn;
+    private Button fullTabBtn;
     private CheckBox admin;
     private int PICK_IMAGE_REQUEST = 28364;
     private Uri filePath;
@@ -68,8 +70,9 @@ public class TutorActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.rcvDrinks);
         addBtn = findViewById(R.id.btnAdd);
         backBtn = findViewById(R.id.btnBack);
+        fullTabBtn = findViewById(R.id.btnViewTab);
 
-        buildRecyclerView();
+                buildRecyclerView();
 
         tutorsViewModel.getTutors().observe(this, new Observer<ArrayList<Tutor>>() {
             @Override
@@ -90,6 +93,12 @@ public class TutorActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+        fullTabBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fullTab();
             }
         });
     }
@@ -214,6 +223,11 @@ public class TutorActivity extends AppCompatActivity {
 
         AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+    private void fullTab(){
+        Intent tabActivity = new Intent(this, TabActivity.class);
+        startActivity(tabActivity);
     }
 
     private void chooseImage() {

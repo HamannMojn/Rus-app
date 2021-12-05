@@ -9,14 +9,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import dk.au.mad21fall.projekt.rus_app.Models.Purchases;
-import dk.au.mad21fall.projekt.rus_app.Models.Team;
 import dk.au.mad21fall.projekt.rus_app.R;
 
 public class PersonalTabActivity extends AppCompatActivity {
@@ -35,13 +33,13 @@ public class PersonalTabActivity extends AppCompatActivity {
         setContentView(R.layout.activity_personal_tab);
 
         adapter = new PersonalTabAdapter(tutorPurchaces);
-        rcvPurchases = findViewById(R.id.rvcTab);
+        rcvPurchases = findViewById(R.id.rvcTabTutor);
         rcvPurchases.setLayoutManager(new LinearLayoutManager(this));
         rcvPurchases.setAdapter(adapter);
 
         fullPrice = 0.0;
 
-        fullAmount = findViewById(R.id.txtFullAmount);
+        fullAmount = findViewById(R.id.txtFullAmountTab);
 
         viewModel = new ViewModelProvider(this).get(PersonalTabActivityViewModel.class);
         viewModel.getPurchases().observe(this, new Observer<ArrayList<Purchases>>() {
@@ -57,7 +55,7 @@ public class PersonalTabActivity extends AppCompatActivity {
             }
         });
 
-        backBtn = findViewById(R.id.btnCancelTab);
+        backBtn = findViewById(R.id.btnBackTab);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
