@@ -17,8 +17,11 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.Arrays;
 import java.util.List;
 
+import androidx.lifecycle.ViewModelProvider;
 import dk.au.mad21fall.projekt.rus_app.BarView.BarActivity;
 import dk.au.mad21fall.projekt.rus_app.LeaderBoardView.LeaderBoardActivity;
+import dk.au.mad21fall.projekt.rus_app.LeaderBoardView.LeaderBoardActivityViewModel;
+import dk.au.mad21fall.projekt.rus_app.PersonalTabView.PersonalTabActivity;
 import dk.au.mad21fall.projekt.rus_app.R;
 import dk.au.mad21fall.projekt.rus_app.TutorView.TutorActivity;
 
@@ -26,11 +29,15 @@ public class MainActivity extends AppCompatActivity {
     Button BtnSignIn;
     public static final int REQUEST_LOGIN = 69420;
     FirebaseAuth auth;
+    MainActivityViewModel viewmodel;
+    String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        viewmodel = new ViewModelProvider(this).get(MainActivityViewModel.class);
 
         BtnSignIn = findViewById(R.id.BtnSignInTutor);
         BtnSignIn.setOnClickListener(new View.OnClickListener() {
@@ -47,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         }
         if(auth.getCurrentUser() != null) {
             FirebaseUser firebaseUser = auth.getCurrentUser();
+
             if (firebaseUser != null) {
                 Log.d("JaGoP nYmAnN", ""+firebaseUser.getEmail());
             }
@@ -76,8 +84,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void gotoMainApp() {
-        Intent i = new Intent(this, BarActivity.class);
-        startActivity(i);
-        finish();
+        //boolean isTutor = viewmodel.getCurrentUserIsTutor();
+        //boolean isAdmin = viewmodel.getCurrentUserIsAdmin();
+        //Log.d(TAG, "is tutor: " + isTutor);
+        //Log.d(TAG, "is admin: " + isAdmin);
+        if(1 == 1) {
+            Intent i = new Intent(this, PersonalTabActivity.class);
+            startActivity(i);
+            finish();
+        } else {
+            Intent i = new Intent(this, BarActivity.class);
+            startActivity(i);
+            finish();
+        }
     }
 }
