@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
-        android:text="Drinks"
+        android:text="@string/drinks"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -45,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:text="Kasser"
+        android:text="@string/beers"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -54,7 +54,7 @@
         android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="Tutorer"
+        android:text="@string/tutors"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/gotoLeaderboardBtn"
         app:layout_constraintStart_toEndOf="@+id/gotoDrinksBtn" />

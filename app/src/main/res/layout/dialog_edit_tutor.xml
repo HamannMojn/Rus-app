@@ -77,7 +77,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Firstname"
+        android:text="@string/firstname"
         app:layout_constraintStart_toStartOf="@+id/txtDialogEditFirstname"
         app:layout_constraintTop_toBottomOf="@+id/imgDialogEditTutor" />
 
@@ -86,7 +86,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Lastname"
+        android:text="@string/lastname"
         app:layout_constraintStart_toStartOf="@+id/txtDialogEditLastname"
         app:layout_constraintTop_toBottomOf="@+id/txtDialogEditFirstname" />
 
@@ -95,7 +95,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Tutor Name"
+        android:text="@string/tutorname"
         app:layout_constraintStart_toStartOf="@+id/txtDialogEditTutorName"
         app:layout_constraintTop_toBottomOf="@+id/txtDialogEditLastname" />
 
@@ -115,7 +115,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Email"
+        android:text="@string/email"
         app:layout_constraintStart_toStartOf="@+id/txtDialogEditEmail"
         app:layout_constraintTop_toBottomOf="@+id/txtDialogEditTutorName" />
 

@@ -24,9 +24,9 @@
         android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:layout_marginStart="16dp"
-        android:text="Back"
+        android:layout_marginBottom="16dp"
+        android:text="@string/Back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -34,9 +34,9 @@
         android:id="@+id/btnAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
-        android:text="Add"
+        android:layout_marginBottom="16dp"
+        android:text="@string/Add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

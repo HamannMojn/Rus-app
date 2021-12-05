@@ -13,24 +13,26 @@
         <entry key="..\:/Rus-app/app/src/main/res/layout/activity_drinks.xml" value="0.29438405797101447" />
         <entry key="..\:/Rus-app/app/src/main/res/layout/activity_leader_board.xml" value="0.33" />
         <entry key="..\:/Rus-app/app/src/main/res/layout/activity_main.xml" value="0.328125" />
+        <entry key="..\:/Rus-app/app/src/main/res/layout/activity_personal_tab.xml" value="0.3307291666666667" />
         <entry key="..\:/Rus-app/app/src/main/res/layout/activity_sign_in.xml" value="0.328125" />
         <entry key="..\:/Rus-app/app/src/main/res/layout/activity_tab.xml" value="0.3307291666666667" />
         <entry key="..\:/Rus-app/app/src/main/res/layout/activity_tutor.xml" value="0.25" />
         <entry key="..\:/Rus-app/app/src/main/res/layout/dialog_adddrink.xml" value="0.32708333333333334" />
         <entry key="..\:/Rus-app/app/src/main/res/layout/dialog_bar_activity.xml" value="0.33" />
+        <entry key="..\:/Rus-app/app/src/main/res/layout/dialog_edit_team.xml" value="0.31476449275362317" />
+        <entry key="..\:/Rus-app/app/src/main/res/layout/dialog_edit_tutor.xml" value="0.31476449275362317" />
         <entry key="..\:/Rus-app/app/src/main/res/layout/dialog_items.xml" value="0.32708333333333334" />
         <entry key="..\:/Rus-app/app/src/main/res/layout/drinks_grid_item.xml" value="0.32708333333333334" />
         <entry key="..\:/Rus-app/app/src/main/res/layout/list_item.xml" value="0.4841485507246377" />
+        <entry key="..\:/Rus-app/app/src/main/res/layout/tab_list_item.xml" value="0.31476449275362317" />
         <entry key="..\:/Rus-app/app/src/main/res/layout/team_list_item.xml" value="0.16084093211752787" />
+        <entry key="..\:/Rus-app/app/src/main/res/layout/tutor_addrink_list_item.xml" value="0.31476449275362317" />
         <entry key="..\:/Rus-app/app/src/main/res/layout/tutor_layout.xml" value="0.5" />
         <entry key="..\:/Rus-app/app/src/main/res/layout/tutor_list_item.xml" value="0.5" />
         <entry key="..\:/Users/Hamann/Desktop/RusApp/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Users/Hamann/Desktop/RusApp/app/src/main/res/layout/list_item.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18333333333333332" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.16927083333333334" />
-        <entry key="app/src/main/res/layout/dialog_adddrink.xml" value="0.15208333333333332" />
-        <entry key="app/src/main/res/layout/dialog_edit_team.xml" value="0.15208333333333332" />
-        <entry key="app/src/main/res/layout/dialog_edit_tutor.xml" value="0.3321384675130311" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.16927083333333334" />
         <entry key="app/src/main/res/layout/list_item.xml" value="0.18333333333333332" />
       </map>

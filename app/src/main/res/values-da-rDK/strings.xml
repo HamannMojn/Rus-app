@@ -1,3 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Rus-App</string>
+    <string name="Instructor">Tutor</string>
+    <string name="Beverage_Menu">Alle drikkevarer</string>
+    <string name="beverages">Drikkevarer</string>
+    <string name="leaderboard">Kassekonkurrence</string>
+    <string name="Instructors">Tutorer</string>
+    <string name="prompt_email">E-mail</string>
+    <string name="prompt_password">Adgangskode</string>
+    <string name="action_sign_in">Log ind eller registrer dig</string>
+    <string name="action_sign_in_short">Log ind</string>
+    <string name="welcome">Velkommen!</string>
+    <string name="invalid_username">Ikke gyldigt brugernavn</string>
+    <string name="invalid_password">Adgangskode skal være mindst 5 tegn</string>
+    <string name="login_failed">Log ind fejlede</string>
+    <string name="Create_Team">Opret hold</string>
+    <string name="Back">Tilbage</string>
+    <string name="Name">Navn</string>
+    <string name="Add">Tilf\'øj</string>
+    <string name="createTeam">Opret et hold</string>
+    <string name="team_name">Hold navn</string>
+    <string name="Amount">Mængde</string>
+    <string name="Decrement">-</string>
+    <string name="Increment">+</string>
+    <string name="login">Log ind</string>
+    <string name="logout">Log ud</string>
+    <string name="firstname">Fornavn(e)</string>
+    <string name="lastname">Efternavn</string>
+    <string name="tutorname">Tutor navn</string>
+    <string name="tutors">Tutorer</string>
+    <string name="beers">Kasser</string>
+    <string name="appWelcome">Velkommen til Rus1-Katrinebjerg bar app</string>
+    <string name="drinkName">Drink navn</string>
+    <string name="drinkPrice">Drink pris</string>
+    <string name="Cancel">Afbryd</string>
 </resources>
