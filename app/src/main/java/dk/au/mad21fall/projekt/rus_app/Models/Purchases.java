@@ -1,6 +1,7 @@
 package dk.au.mad21fall.projekt.rus_app.Models;
 
 public class Purchases {
+
     private String drinksId;
     private String tutorId;
     private int amount;
