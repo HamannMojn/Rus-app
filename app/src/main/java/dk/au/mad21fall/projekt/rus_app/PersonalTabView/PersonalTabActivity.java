@@ -2,6 +2,7 @@ package dk.au.mad21fall.projekt.rus_app.PersonalTabView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +15,10 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.auth.FirebaseAuth;
+
+import dk.au.mad21fall.projekt.rus_app.MainView.MainActivity;
 import dk.au.mad21fall.projekt.rus_app.Models.Purchases;
 import dk.au.mad21fall.projekt.rus_app.Models.Tutor;
 import dk.au.mad21fall.projekt.rus_app.R;
@@ -24,10 +29,11 @@ public class PersonalTabActivity extends AppCompatActivity {
     private RecyclerView rcvPurchases;
     private Tutor currentTutor = new Tutor();
     private ArrayList<Purchases> tutorPurchaces = new ArrayList<>();
-    private Button backBtn;
+    private Button backBtn, btnSignOut;
     private TextView fullAmount;
     private Double fullPrice;
     private String TAG = "PersonalTabActivity";
+    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,5 +78,22 @@ public class PersonalTabActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        btnSignOut = findViewById(R.id.btnSignOut);
+        btnSignOut.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                SignOut();
+            }
+        });
+    }
+
+    private void SignOut() {
+        if(auth == null){
+            auth = FirebaseAuth.getInstance();
+        }
+        auth.signOut();
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
     }
 }

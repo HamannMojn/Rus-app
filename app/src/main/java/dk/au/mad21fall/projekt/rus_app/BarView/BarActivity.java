@@ -35,6 +35,7 @@ public class BarActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private BarAdapter barAdapter;
+    Tutor currentTutor = new Tutor();
     FirebaseAuth auth;
 
     @Override
@@ -55,6 +56,7 @@ public class BarActivity extends AppCompatActivity {
         leaderboardBtn.setOnClickListener(view -> leaderboard());
 
         buildRecyclerView();
+        removeButtons();
 
         BtnSignOut = findViewById(R.id.BtnSignOutTutor);
 
@@ -71,6 +73,13 @@ public class BarActivity extends AppCompatActivity {
                 displayTutors = tutors;
                 barAdapter.Tutor(displayTutors);
                 changeScreen();
+            }
+        });
+
+        barViewModel.getCurrentTutor().observe(this, new Observer<Tutor>() {
+            @Override
+            public void onChanged(Tutor tutor) {
+                currentTutor = tutor;
             }
         });
     }
@@ -91,6 +100,18 @@ public class BarActivity extends AppCompatActivity {
         }
         else{
             recyclerView.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private void removeButtons(){
+        Log.d("balalala", "balalala" + currentTutor.isAdmin());
+        if(currentTutor.isAdmin()){
+            tutorBtn.setVisibility(View.GONE);
+            drinksBtn.setVisibility(View.GONE);
+        }
+        else{
+            tutorBtn.setVisibility(View.VISIBLE);
+            drinksBtn.setVisibility(View.VISIBLE);
         }
     }
 
