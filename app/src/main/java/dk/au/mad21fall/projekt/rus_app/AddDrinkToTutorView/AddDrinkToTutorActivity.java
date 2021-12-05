@@ -26,12 +26,11 @@ import dk.au.mad21fall.projekt.rus_app.R;
 
 public class AddDrinkToTutorActivity extends AppCompatActivity {
     String TAG = "ADDDRINKSTOTUTOR";
-    private Button btnAddDrinks;
+    private Button btnReturnToMain;
     private RecyclerView rcvDrinksList;
     private DrinksAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private AddDrinkToTutorViewModel viewModel;
-
 
     //Data
     int count = 0;
@@ -52,15 +51,14 @@ public class AddDrinkToTutorActivity extends AppCompatActivity {
             public void onChanged(@Nullable ArrayList<Drinks> drinks) {
                 adapter.setDrink(drinks);
                 adapter.updateDrinkList(drinks);
-
             }
         });
-
-        buildRcv();
-
+        setupUi();
     }
 
-    private void buildRcv() {
+    //This setup is setting the recyclerview up with the DrinksAdapter, because they have the same view.
+    private void setupUi() {
+        //Adapter + Recyclerview setup
         adapter = new DrinksAdapter(drinksList);
         rcvDrinksList = findViewById(R.id.AddDrinksRcvView);
         rcvDrinksList.setLayoutManager(new GridLayoutManager(this, 3));
@@ -71,12 +69,20 @@ public class AddDrinkToTutorActivity extends AppCompatActivity {
             public void onDrinkClicked(Drinks drinks) {
                 Log.d(TAG, "onDrinkClicked: " + drinks.getName());
                 AddDrinkToTutorDialog(drinks);
-                //Log.d(TAG, "onDrinkClicked: " + drinks.getName());
+            }
+        });
+
+        //Button Setup
+        btnReturnToMain = findViewById(R.id.btnReturnToMain);
+        btnReturnToMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }
 
-
+    //Creating and opening, the Incement/Decrement dialog
     private void AddDrinkToTutorDialog(Drinks drink){
         AlertDialog.Builder builder = new AlertDialog.Builder(AddDrinkToTutorActivity.this, R.style.Theme_AppCompat_Dialog);
         final View AddDrinkToTutorDialog = getLayoutInflater().inflate(R.layout.tutor_addrink_list_item, null);
@@ -110,9 +116,6 @@ public class AddDrinkToTutorActivity extends AppCompatActivity {
             }
         });
 
-        //drinkName.setText("FremMedPikken!");
-
-
         builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
@@ -123,7 +126,7 @@ public class AddDrinkToTutorActivity extends AppCompatActivity {
         builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                addDrinks(drink.getName(), amount[0], drink.getPrice());
+                addPurchase(drink.getName(), amount[0], drink.getPrice());
             }
         });
 
@@ -131,7 +134,8 @@ public class AddDrinkToTutorActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    private void addDrinks(String drinkName, int amount, double drinkPrice) {
+    //Adding a purchase to the database
+    private void addPurchase(String drinkName, int amount, double drinkPrice) {
         viewModel.AddPurchase(drinkName, tutorName, amount, drinkPrice);
     }
 

@@ -61,6 +61,7 @@ public class DrinksActivity extends AppCompatActivity {
     private ArrayList<Drinks> drinks = new ArrayList<>();
     private Uri filePath;
     private String imageUrl;
+    private boolean thumbnailChanged = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +112,9 @@ public class DrinksActivity extends AppCompatActivity {
             }
         });
 
+        //This button has two functions
+        //The first is to open a dialog, to add a drink without the api
+        //The second is to lookup in the api for a drink from name
         btnAddDrink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -155,7 +159,11 @@ public class DrinksActivity extends AppCompatActivity {
                 Drinks tempdrink = drink;
                 tempdrink.setName(drinkName.getText().toString());
                 tempdrink.setPrice(Double.parseDouble(drinkPrice.getText().toString()));
-                tempdrink.setThumbnailURL(imageUrl);
+                if(thumbnailChanged == true)
+                {
+                    tempdrink.setThumbnailURL(imageUrl);
+                    thumbnailChanged = false;
+                }
                 drinkViewModel.editDrink(tempdrink);
             }
         });
@@ -179,6 +187,7 @@ public class DrinksActivity extends AppCompatActivity {
         dialog.show();
     }
 
+    //Open Dialog to add new drink without using the API
     private void CreateAddDrinkDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(DrinksActivity.this, R.style.Theme_AppCompat_Dialog);
         final View editDialog = getLayoutInflater().inflate(R.layout.dialog_adddrink, null);
@@ -187,7 +196,6 @@ public class DrinksActivity extends AppCompatActivity {
 
         image = editDialog.findViewById(R.id.imgDialogAddDrink);
         image.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {
                 chooseImage();
@@ -220,7 +228,6 @@ public class DrinksActivity extends AppCompatActivity {
         });
 
         AlertDialog dialog = builder.create();
-
         dialog.show();
     }
 
@@ -305,6 +312,7 @@ public class DrinksActivity extends AppCompatActivity {
                                                 public void onComplete(@NonNull Task<Uri> task) {
                                                     imageUrl = task.getResult().toString();
                                                     Glide.with(image.getContext()).load(imageUrl).into(image);
+                                                    thumbnailChanged = true;
                                                     Log.d(TAG, "URL: " + imageUrl);
                                                 }
                                             });

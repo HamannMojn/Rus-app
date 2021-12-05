@@ -27,7 +27,7 @@
     <string name="Decrement">Decrement</string>
     <string name="Increment">Increment</string>
     <string name="Ok">Ok</string>
-    <string name="AddDrinksToTutor">Add drinks to tutor</string>
+    <string name="Return_to_main">Return to Main</string>
     <string name="drinks">Drink</string>
     <string name="login">Login</string>
     <string name="logout">Logout</string>

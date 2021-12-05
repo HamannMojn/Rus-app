@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -48,6 +49,7 @@ public class TutorActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private Button addBtn;
     private Button backBtn;
+    private CheckBox admin;
     private int PICK_IMAGE_REQUEST = 28364;
     private Uri filePath;
     private String imageUrl;
@@ -136,6 +138,8 @@ public class TutorActivity extends AppCompatActivity {
             tutorName.setText(tutor.getTutorName());
         EditText email = editDialog.findViewById(R.id.txtDialogEditEmail);
             email.setText(tutor.getEmail());
+        admin = editDialog.findViewById(R.id.chkAdminEdit);
+            admin.setChecked(tutor.isAdmin());
         dialogImage = editDialog.findViewById(R.id.imgDialogEditTutor);
             Glide.with(dialogImage.getContext()).load(tutor.getTutorImage()).into(dialogImage);
 
@@ -169,9 +173,10 @@ public class TutorActivity extends AppCompatActivity {
                 if(!email.getText().toString().isEmpty()) {
                     tutor.setEmail(email.getText().toString());
                 }
-                if(!imageUrl.isEmpty()) {
+                if(imageUrl!=null) {
                     tutor.setTutorImage(imageUrl);
                 }
+                tutor.setAdmin(admin.isChecked());
 
                 tutorsViewModel.editTutor(tutor);
             }
