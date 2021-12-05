@@ -85,21 +85,23 @@ public class Repository {
     public Tutor getCurrentTutor() {
         FirebaseUser firebaseUser = auth.getCurrentUser();
 
-        db.collection("tutors").whereEqualTo("email", firebaseUser.getEmail()).addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot snapshot, @Nullable FirebaseFirestoreException error) {
-                if(snapshot!=null && !snapshot.isEmpty()){
-                    for(DocumentSnapshot doc : snapshot.getDocuments()){
-                        Tutor t = doc.toObject(Tutor.class);
-                        t.setId(doc.getId());
-                        if(t!=null) {
-                            currentTutor = t;
-                            Log.d(TAG, "Hello, my name is " + currentTutor.getFirstName());
+        if(firebaseUser!=null) {
+            db.collection("tutors").whereEqualTo("email", firebaseUser.getEmail()).addSnapshotListener(new EventListener<QuerySnapshot>() {
+                @Override
+                public void onEvent(@Nullable QuerySnapshot snapshot, @Nullable FirebaseFirestoreException error) {
+                    if (snapshot != null && !snapshot.isEmpty()) {
+                        for (DocumentSnapshot doc : snapshot.getDocuments()) {
+                            Tutor t = doc.toObject(Tutor.class);
+                            t.setId(doc.getId());
+                            if (t != null) {
+                                currentTutor = t;
+                                Log.d(TAG, "Hello, my name is " + currentTutor.getFirstName());
+                            }
                         }
                     }
                 }
-            }
-        });
+            });
+        }
 
         return currentTutor;
     }
