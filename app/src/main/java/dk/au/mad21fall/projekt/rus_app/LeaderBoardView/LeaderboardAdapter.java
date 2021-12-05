@@ -44,7 +44,6 @@ public class LeaderboardAdapter extends RecyclerView.Adapter<LeaderboardAdapter.
     @Override
     public void onBindViewHolder(@NonNull LeaderboardViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Team team = teams.get(position);
-        Log.d(team.getName(), "FUCK DIS BITCH");
         int placement = position+1;
 
         holder.title.setText(team.getName());

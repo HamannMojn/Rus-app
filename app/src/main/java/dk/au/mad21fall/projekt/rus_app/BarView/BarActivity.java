@@ -104,7 +104,6 @@ public class BarActivity extends AppCompatActivity {
     }
 
     private void removeButtons(){
-        Log.d("balalala", "balalala" + currentTutor.isAdmin());
         if(currentTutor.isAdmin()){
             tutorBtn.setVisibility(View.GONE);
             drinksBtn.setVisibility(View.GONE);

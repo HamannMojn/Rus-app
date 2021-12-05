@@ -103,7 +103,6 @@ public class DrinksAdapter extends RecyclerView.Adapter<DrinksAdapter.DrinkViewH
                 @Override
                 public void onClick(View view)
                 {
-                    Log.d("MainApp", "Hej " + listener);
                     if(listener != null)
                     {
                         int position = getAdapterPosition();

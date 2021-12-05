@@ -83,7 +83,6 @@ public class BarAdapter extends RecyclerView.Adapter<BarAdapter.BarViewHolder> {
     public void Tutor(ArrayList<Tutor> tutors)
     {
         this.BarList = tutors;
-        Log.d("MY_DD", "" + this.BarList.size());
         notifyDataSetChanged();
     }
 
